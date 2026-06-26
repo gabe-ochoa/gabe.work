@@ -14,7 +14,12 @@ take a meeting with Gabe. They have two minutes. Earn them.
 
 ## 2. Voice
 
+Canonical spec: `dotfiles/agent/guides/personal/writing-voice.md`. Calibrated
+from Gabe's blog (gabe.work/how). Read it before writing copy. The short version:
+
 - Short sentences. Specific numbers. No hedging.
+- Lead with the real noun, not the adjective. "Teams that ship," not
+  "high-performing teams." Show the trait, don't label it.
 - No corporate jargon. No "synergies," no "passionate about leveraging."
 - Never use emdashes. Use periods, commas, or colons.
 - Lead with outcomes, not responsibilities. "Scaled DSM to $5M ARR," not
@@ -48,7 +53,12 @@ take a meeting with Gabe. They have two minutes. Earn them.
   No framework, no bundler, no npm. If a change needs a build step, it's the
   wrong change.
 - **No JavaScript** unless it earns its place. The site works fully without it.
-  Default to none.
+  Default to none. The one sanctioned exception: a tiny inline script that
+  reassembles the email address so scrapers can't harvest it from source. It
+  degrades to a readable `<noscript>` fallback. Don't strip it. Don't add a
+  second script without a reason this good.
+- **The email never appears as plain text in the served HTML.** No `mailto:` in
+  source, none in the JSON-LD. Keep it that way.
 - **No third-party requests.** No CDN fonts, no analytics that phone home, no
   trackers, no external scripts. The page loads from its own origin only.
 - Fast: the whole page is a few KB. Keep it that way. Optimize images before
