@@ -49,9 +49,13 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
 
 ## 5. Technical constraints
 
-- **Static, zero-dependency, no build.** Plain HTML and CSS. This is a hard rule.
-  No framework, no bundler, no npm. If a change needs a build step, it's the
-  wrong change.
+- **Static and zero-dependency.** Plain HTML and CSS. No framework, no bundler,
+  no npm. The *served* site has zero dependencies and zero runtime build.
+- **One sanctioned build step: the "How" blog.** `build.py` turns markdown posts
+  into static HTML. It is pure Python stdlib, no install, no network, and its
+  output is plain static HTML committed to the repo. That is the only build, and
+  it was a deliberate choice (see §6). Don't add a second build or any
+  dependency. If a change to the main pages needs a build, it's the wrong change.
 - **No JavaScript** unless it earns its place. The site works fully without it.
   Default to none. The one sanctioned exception: a tiny inline script that
   reassembles the email address so scrapers can't harvest it from source. It
@@ -73,6 +77,10 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
 - Good reasons to grow: a writing/talks section if Gabe starts publishing
   regularly; a detailed case study for a flagship project. Each new thing must
   carry its weight and follow every principle above.
+- **The "How" blog** at `/how/` is the sanctioned writing section: posts that
+  detail how things actually got done. It earns its build step only if it stays
+  alive. A blog with two stale posts looks worse than no blog. Publish on a real
+  cadence or don't publish. Posts follow the voice rules in §2.
 - One page is a feature, not a limitation. Stay single-page until there's a real
   reason not to.
 

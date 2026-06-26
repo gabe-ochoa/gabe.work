@@ -27,6 +27,24 @@ Preview locally by opening `index.html` in a browser, or:
 python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 
+## Writing: the "How" blog
+
+The one exception to "no build." Posts live in `posts/*.md` (markdown). A single
+zero-dependency Python script generates static HTML into `how/`:
+
+```sh
+python3 build.py            # build published posts
+python3 build.py --drafts   # also render posts marked draft: true
+```
+
+- Write a post: see `posts/README.md` for the format and supported markdown.
+- New posts start with `draft: true` and stay out of the published build.
+- The generated files in `how/`, plus `404.html` and `sitemap.xml`, are committed
+  to the repo (GitHub Pages serves them as-is). Rebuild and commit both the
+  markdown source and the generated output.
+- The converter does no smart-quote or emdash substitution, so the no-emdash rule
+  holds. RSS feed is generated at `/how/feed.xml`.
+
 ## Principles
 
 How this site should look, read, and grow is documented in
