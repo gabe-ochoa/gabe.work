@@ -169,6 +169,7 @@ def parse_post(path):
     slug = re.sub(r"[^a-z0-9-]+", "-", slug.lower()).strip("-")
     meta["slug"] = slug
     meta["draft"] = str(meta.get("draft", "")).lower() in ("true", "yes", "1")
+    meta["redirect_from"] = [x.strip() for x in meta.get("redirect_from", "").split(",") if x.strip()]
     meta["body_html"] = md_to_html(body)
     # date
     d = meta.get("date", "")
@@ -338,6 +339,21 @@ def render_sitemap(posts):
 ''' % body
 
 
+def render_redirect(new_rel, canonical):
+    # Static meta-refresh stub for an old URL. Relative target so it works on
+    # http now and https later. Canonical points search engines at the new URL.
+    return ('<!DOCTYPE html>\n<html lang="en">\n<head>\n'
+            '  <meta charset="utf-8">\n'
+            '  <title>Redirecting…</title>\n'
+            '  <link rel="canonical" href="%s">\n'
+            '  <meta name="robots" content="noindex">\n'
+            '  <meta http-equiv="refresh" content="0; url=%s">\n'
+            '  <script>location.replace("%s")</script>\n'
+            '</head>\n<body>\n'
+            '  <p>This post moved. <a href="%s">Continue to it</a>.</p>\n'
+            '</body>\n</html>\n') % (canonical, new_rel, new_rel, new_rel)
+
+
 def render_404():
     body = '''    <section class="hero">
       <p class="eyebrow">404</p>
@@ -379,6 +395,16 @@ def main():
     print("Building %d post(s)%s..." % (len(posts), " (incl. drafts)" if include_drafts else ""))
     for p in posts:
         write(os.path.join(ROOT, OUT_DIR, p["slug"], "index.html"), render_post(p))
+    nredir = 0
+    for p in posts:
+        new_rel = "%s/%s/" % (BLOG_BASE, p["slug"])
+        canonical = SITE_URL + new_rel
+        for old in p["redirect_from"]:
+            write(os.path.join(ROOT, old.strip("/"), "index.html"),
+                  render_redirect(new_rel, canonical))
+            nredir += 1
+    if nredir:
+        print("  wrote %d redirect stub(s)" % nredir)
     write(os.path.join(ROOT, OUT_DIR, "index.html"), render_index(posts))
     write(os.path.join(ROOT, OUT_DIR, "feed.xml"), render_feed(posts))
     write(os.path.join(ROOT, "sitemap.xml"), render_sitemap(posts))

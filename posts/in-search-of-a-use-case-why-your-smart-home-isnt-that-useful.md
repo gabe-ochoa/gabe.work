@@ -3,6 +3,7 @@ title: In search of a use case: Why your smart home isn’t that useful
 date: 2015-10-21
 description: The current state of the Smart Home can be one of awe but more times than not it’s a frustrating , hole ridden , maddening experience. There’s an
 slug: in-search-of-a-use-case-why-your-smart-home-isnt-that-useful
+redirect_from: /how/2015/10/21/in-search-of-a-use-case-why-your-smart-home-isnt-that-useful
 draft: false
 ---
 

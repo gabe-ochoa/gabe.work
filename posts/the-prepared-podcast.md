@@ -3,6 +3,7 @@ title: The Prepared Podcast
 date: 2017-06-20
 description: I was on The Prepared podcast this week chatting with Spencer and Zach about the order & fulfillment management system I'm building for their relaunch of
 slug: the-prepared-podcast
+redirect_from: /how/2017/6/20/the-prepared-podcast
 draft: false
 ---
 

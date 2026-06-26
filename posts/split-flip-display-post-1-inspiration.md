@@ -3,6 +3,7 @@ title: Split-Flip Display: Post 1, Inspiration
 date: 2015-04-05
 description: My projects normally start with coffee. or a walk. or both. In this case it also included a business trip to San Francisco during which I came across the
 slug: split-flip-display-post-1-inspiration
+redirect_from: /how/2015/4/5/1dy5un4fw3qr05mzar3rm70xbiwrnm
 draft: false
 ---
 

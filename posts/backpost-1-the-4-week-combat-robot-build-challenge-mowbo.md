@@ -3,6 +3,7 @@ title: Backpost 2: The 4 Week Combat Robot Build Challenge: MowBo
 date: 2015-03-28
 description: Title: The 4 Week Combat Robot Build Challenge: MowBot Date: 2012-10-7 A little over a month ago it was mentioned in passing that there was going to be a
 slug: backpost-1-the-4-week-combat-robot-build-challenge-mowbo
+redirect_from: /how/2015/3/28/backpost-1-the-4-week-combat-robot-build-challenge-mowbo
 draft: false
 ---
 

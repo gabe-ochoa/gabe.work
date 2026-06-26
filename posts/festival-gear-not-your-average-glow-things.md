@@ -3,6 +3,7 @@ title: Festival Gear: Not your average glow things
 date: 2015-09-29
 description: A very good way to get questioned at the airport I love things that glow. Most people do. Something about them screams future, life, presence. The only
 slug: festival-gear-not-your-average-glow-things
+redirect_from: /how/2015/9/29/festival-gear-not-your-average-glow-things
 draft: false
 ---
 

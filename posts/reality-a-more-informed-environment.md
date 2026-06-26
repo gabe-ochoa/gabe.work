@@ -3,6 +3,7 @@ title: Reality + : A more informed environment
 date: 2015-06-09
 description: Insert virtual reality rant here There is always a contingent of people in the techology sector looking for the next big environment - the next big
 slug: reality-a-more-informed-environment
+redirect_from: /how/2015/6/9/reality-a-more-informed-environment
 draft: false
 ---
 

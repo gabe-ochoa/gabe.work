@@ -3,6 +3,7 @@ title: Building a Manufacturing Fixture in 3 Weeks.
 date: 2015-10-06
 description: I had the amazing opportunity of building a fixture to put new software on a product. Unfortunately it was not under the best of circumstances but that
 slug: how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks
+redirect_from: /how/2015/10/6/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks
 draft: false
 ---
 

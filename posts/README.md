@@ -27,6 +27,9 @@ More text.
 - `description` — one line. Shows in the post list, RSS, and social previews.
 - `draft` — `true` keeps it out of the published build. Omit (or `false`) to publish.
 - `slug` — optional. Defaults to the filename. Sets the URL: `/how/<slug>/`.
+- `redirect_from` — optional, comma-separated old paths (e.g.
+  `/how/2017/6/21/old-slug`). Generates a static redirect stub at each so old
+  links land on this post. Used to preserve the old Squarespace URLs.
 
 ## Supported markdown
 

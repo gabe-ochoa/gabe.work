@@ -3,6 +3,7 @@ title: Backpost 5: Being a Printer Master: Managing Mass Printing in a Makerspac
 date: 2015-03-28
 description: Title: Being a Printer Master: Managing Mass Printing in a Makerspace Date: 2013-04-25 Check out this awesome post by my friend Jeff Landrum about being a
 slug: backpost-5-being-a-printer-master-managing-mass-printing-in-a-makerspace
+redirect_from: /how/2015/3/28/backpost-5-being-a-printer-master-managing-mass-printing-in-a-makerspace
 draft: false
 ---
 

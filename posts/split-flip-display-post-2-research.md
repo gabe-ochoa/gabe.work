@@ -3,6 +3,7 @@ title: Split-Flip Display: Post 2, Research
 date: 2015-06-09
 description: Taredown! This is by far one of my favorite processes. In-fact I think it will ispire a new regular post - gabe breaks stuff. Also maybe another domain.
 slug: split-flip-display-post-2-research
+redirect_from: /how/2015/6/9/split-flip-display-post-2-research
 draft: false
 ---
 

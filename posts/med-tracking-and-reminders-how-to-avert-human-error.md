@@ -3,6 +3,7 @@ title: Med tracking and Reminders: How to Avert Human Error
 date: 2016-09-21
 description: There’s been some illness in my family lately. The kind that requires lots of doctor visits and medication. As with any major illnesses, half of the
 slug: med-tracking-and-reminders-how-to-avert-human-error
+redirect_from: /how/2016/9/21/med-tracking-and-reminders-how-to-avert-human-error
 draft: false
 ---
 

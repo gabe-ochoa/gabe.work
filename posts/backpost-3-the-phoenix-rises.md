@@ -3,6 +3,7 @@ title: Backpost 3: The Phoenix Rises
 date: 2015-03-28
 description: Title: The Phoenix Rises Date: 2012-11-12 Backstory: After designing and building a 3lb combat robot in 4 weeks for the Atlanta Mini Marker Fair (AMMF), I
 slug: backpost-3-the-phoenix-rises
+redirect_from: /how/2015/3/28/backpost-3-the-phoenix-rises
 draft: false
 ---
 

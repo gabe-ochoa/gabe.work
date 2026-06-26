@@ -3,6 +3,7 @@ title: The Exploration Process
 date: 2015-10-03
 description: There’s a story I’d like to share. It’s a story of little sleep as many of these kind are. How do you produce something you have the tools for but not the
 slug: the-exploration-process
+redirect_from: /how/2015/10/3/the-exploration-process
 draft: false
 ---
 

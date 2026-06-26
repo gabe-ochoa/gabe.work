@@ -3,6 +3,7 @@ title: How to build a city: Hudson Yards
 date: 2016-02-03
 description: The longer I live in NYC the more I am fascinated by how such a large epicenter of human progress runs on a day to day basis. This encompasses urban
 slug: how-to-build-a-city-hudson-yards
+redirect_from: /how/2016/2/3/how-to-build-a-city-hudson-yards
 draft: false
 ---
 

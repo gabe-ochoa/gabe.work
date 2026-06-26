@@ -3,6 +3,7 @@ title: I am a mechanical engineer
 date: 2016-08-30
 description: I am a mechanical engineer 3 years ago I was in San Fransisco looking for a job. Well, looking for leads of people to talk to that might have interesting
 slug: i-am-a-mechanical-engineer
+redirect_from: /how/2016/8/30/i-am-a-mechanical-engineer
 draft: false
 ---
 

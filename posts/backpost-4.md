@@ -3,6 +3,7 @@ title: Backpost 4: Georgia Tech Invention Studio Sign
 date: 2015-03-28
 description: Title: Georgia Tech Invention Studio Sign Date: 2013-01-12 With the expansion of the Invention Studio at Georgia Tech, the shop was in need of a new sign
 slug: backpost-4
+redirect_from: /how/2015/3/28/backpost-4
 draft: false
 ---
 

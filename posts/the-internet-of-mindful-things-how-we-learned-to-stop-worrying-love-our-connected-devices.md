@@ -3,6 +3,7 @@ title: The Internet of Mindful Things: How we learned to stop worrying and love 
 date: 2015-03-31
 description: It's taken a few years - as any new technology does - but connected devices are finally starting to come into their own. I don't mean there are more
 slug: the-internet-of-mindful-things-how-we-learned-to-stop-worrying-love-our-connected-devices
+redirect_from: /how/2015/3/31/the-internet-of-mindful-things-how-we-learned-to-stop-worrying-love-our-connected-devices
 draft: false
 ---
 

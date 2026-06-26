@@ -3,6 +3,7 @@ title: Light vs Heavy Engineering
 date: 2017-06-21
 description: This is the start of a short series on Light vs Heavy Engineering, when one should be applied over the other, the processes used in each, and how to get
 slug: light-vs-heavy-engineering
+redirect_from: /how/2017/6/21/light-vs-heavy-engineering
 draft: false
 ---
 
