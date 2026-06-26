@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Building a Manufacturing Fixture in 3 Weeks. · How · Gabe Ochoa</title>
+  <meta name="description" content="I had the amazing opportunity of building a fixture to put new software on a product. Unfortunately it was not under the best of circumstances but that" />
+  <meta name="author" content="Gabe Ochoa" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Building a Manufacturing Fixture in 3 Weeks. · How · Gabe Ochoa" />
+  <meta property="og:description" content="I had the amazing opportunity of building a fixture to put new software on a product. Unfortunately it was not under the best of circumstances but that" />
+  <meta property="og:url" content="https://gabe.work/how/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/" />
+  <meta property="og:image" content="https://gabe.work/assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://gabe.work/how/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#18181b" />
+  <link rel="alternate" type="application/rss+xml" title="How · Gabe Ochoa" href="/how/feed.xml" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="/">Gabe&nbsp;Ochoa</a>
+      <ul class="nav__links">
+        <li><a href="/#impact">Impact</a></li>
+        <li><a href="/#experience">Experience</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/how/">How</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a class="nav__resume" href="/assets/gabe-ochoa-resume.pdf">Résumé</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <p class="section__label"><a href="/how/">How</a></p>
+      <h1 class="post__title">Building a Manufacturing Fixture in 3 Weeks.</h1>
+      <p class="post__meta"><time datetime="2015-10-06">Oct 6, 2015</time> · Gabe Ochoa</p>
+      <div class="prose post__body">
+<p>I had the amazing opportunity of building a fixture to put new software on a product. Unfortunately it was not under the best of circumstances but that made for a ludicrous deadline. Perfect conditions to do something I had not even seen a picture of before. I was familiar with the concepts around making that type of fixture but application is understanding and I had never actually used a <a href="https://en.wikipedia.org/wiki/Pogo_pin">pogo pin</a> in a project.</p>
+<p>Queue <a href="https://gabe.work/how/2015/10/3/the-exploration-process">The Process</a>.</p>
+<p>I had started this project and gone through the first three iterations prior to the hard deadline being imposed. The first two iterations were done as an exploration but I shelved it and tried another method. What I was doing just did not work. To be honest, those first two revisions were total shit. But they’re supposed to be as you stumble over your own two feet.</p>
+<p>There were 3 main things I had to tackle with this build:</p>
+<ul><li>I had never put a pogo pins into a project</li></ul>
+<ul><li>Alignment of the pins had to hit 0.2mm pads on the board</li></ul>
+<ul><li>The fixture had to be rigid enough for prolonged use.</li></ul>
+<p>Off the bat I figured I could get the alignment right and could build a rigid enough fixture to hold that alignment. I had zero experience with pogo pins - I’d seen a developer programing fixture or two but nothing meant to process thousands of units. So naturally this is where I started.</p>
+<h2>Rev 1</h2>
+<p>I started off at <a href="http://www.mcmaster.com">McMaster Carr</a> browsing their “Spring Test Probes”. (McMaster does an incredible job of breaking down products into their simplest forms and then explaining all the variants they carry. Good resource if you’re just getting started on a project.) These were rather large. The smallest was 0.050” but given the overwhelming selection at Mouser and the lack of a DigiKey catalog to actually see what the components looked like, I went with the McMaster selection for the first go. The ABS plastics of the product case was used for alignment to make life a little easier. I offset the pins from the outer edge (2 data, 2 power, and a pin grounded for the bootloader), found some scrap acrylic that was roughly a good thickness, and started cutting.</p>
+<p><img src="/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/01.jpeg" alt="" loading="lazy"></p>
+<p>I never got this variant to work. All the pins looked to be hitting correctly on their pads, albeit not reliably, but it would never connect to the computer when powered on. The root cause of this I wouldn't find out until I was on rev 4.</p>
+<h2>Rev 2</h2>
+<p><img src="/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/02.jpg" alt="Rev 2, or what really should have been 1.5" loading="lazy"></p>
+<p>Rev 2, or what really should have been 1.5</p>
+<p>Rev 2 needed to have smaller pogo pins and better alignment. Ditched the plastics and put dowel holders on the board. Offset the pins again cut out a new plate on the laser cutter andddd same issue. This really should have been rev 1.5 and not 2. I wrongly assumed the pins were not making good enough contact and needed to be more precisely aligned. Pit falls of sticking to what you know and not considering what you don't.</p>
+<h2>Rev 3</h2>
+<p>In comes Rev 3. Full redesign. After talking to some friends who know more than me in the electrical world, I found some very small pogo pins which were replaceable should they break and which I could get close enough to each other for the pads I was attempting to hit on the board. This was designed with a full manufacturing line in mind and not just a single person doing re-work of returned products. Clamps, lots of room around the components should something go wrong and need to be fixed, and strikingly good looks. It almost looks like a real thing at this point and not a shitty side project. I built only one of these which suffered the same fate at the others. The project was shelved until I could figure out why the device wasn't mounting to the computer.</p>
+<h2>Rev 4</h2>
+<p><img src="/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/03.jpeg" alt="" loading="lazy"></p>
+<p>This is where the deadline comes into play. A hard deadline. Roughly a half week after I designed and build rev 3, we were in need of the capacity to program tens of thousands of units. We needed 24 working fixtures by Friday. 6 Days. I pulled rev 3 off the shelf and began attempting to tune in the design. Luckily at this point I had some electrical hardware guys helping who pointed out that the data lines needed to be <em>exactly</em> the same length. This hadn't occurred to me and was exactly why none of the other fixtures had produced good results. Because USB is <em>so fast</em> if the two data lines at not exactly the same length you will get errors in the transmission. <a href="https://en.wikipedia.org/wiki/Differential_signaling">Differential signal transmission</a> got added to my vocabulary (such an elegant solution to interference). Looking back at rev 1,2, and 3 with no wire management you can see why I would have a ton of noise in the signal lines. But, this revision worked! And in our brief testing (5 times) it worked 4/5 times. Good enough to attribute to construction and manufacturing errors. Time to make 24 of them...</p>
+<p><img src="/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/04.jpeg" alt="" loading="lazy"></p>
+<p>With the parts laser cut and ordered we flew everything out to the work site and begin assembling. Testing started after 4 of the fixture were assembled. 2 of the 4 worked flawlessly. The other two had fits and starts. Not powering and then not mounting the device to the computer which I thought was a solved problem with our better wire management. All in all, there was about a 85% success rate with rev 4. Not bad but not the 100% confidence we needed. It was Tuesday and the deadline had been extended to Monday. There was another solution prepped and given I thought most of the issues were still alignment related, we elected to go with a CNC milled top hopping that this would be the final revision and to completely rule out any precision related tolerance issues.</p>
+<p>In hindsight there were actually 4 things still majorly broken at this point:</p>
+<p>We DID need more precision but the lack of it was due to both the process (laser cutting) and the material (acrylic).</p>
+<p>The pin we were using for the boot loader was continually connected causing failures midway through loading the software onto the boards.</p>
+<p>It was possible to apply power to the board before all the data pins were securely connected.</p>
+<p>The two tiered design I had for constraining the pins was actually over constrained and causing poor alignment.</p>
+<p>I have no idea how we were getting 85% success at this stage.</p>
+<h2>Rev 5</h2>
+<p><img src="/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/05.jpeg" alt="First cut of Rev 5 our of acrylic still" loading="lazy"></p>
+<p>First cut of Rev 5 our of acrylic still</p>
+<p>To fix some of the alignment issues, we switched to a single thicker top plate for constraining the spring pins. We had been using acrylic up to this point mainly because of the laser cutter which, after the first cut for rev 5, I was kindly reminded by our <a href="http://4130cycleworks.com">machinist</a> what a pain it was to work with on the mill. His suggestion was to use <a href="http://www.kingplastic.com/products/king-starboard/">StarBoard</a> a marine-grade polymer which is super easy to machine, super light and durable, and crazy cheap for the quantity we wanted. 25 12" x 12" x 3/4" boards were around $150. Perfect.</p>
+<p><img src="/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/06.jpeg" alt="" loading="lazy"></p>
+<p>While this was going on, another electrical inclined friend of mine based in our SF office taught me the difference between clean and dirty grounds. I had been making use of the dirty USB case ground to short out a pin on the NAND flash to invoke the boot loader. This caused some of the failures once the device was mounted on the computer due to the noise introduced into the system. Hence, “dirty” ground.</p>
+<p>He made a makeshift sheath around the data usb lines going to the pins using the dirty ground. The data lines were as short as possible and now more insulted from the environment. The clean ground was routed through a toggle switch so we could remove the link between it and the bootloader pin once the download started. We then routed the power through a spate toggle switch of ease of use rather than having the board powered the second it touched the spring pings. Much more elegant. And better yet, it worked. Flawlessly and easily.</p>
+<p>And finally… Rev 5</p>
+<p><img src="/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/07.jpeg" alt="Beauty ain’t she?" loading="lazy"></p>
+<p>Beauty ain’t she?</p>
+<p><img src="/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/08.jpeg" alt="" loading="lazy"></p>
+<p>The next 48 hours were a scramble to get the rest of the plastics, clean out two Radio Shacks of toggle switches, and soldering the new USB to spring pin harnesses for the 24 fixtures we needed. But at the end of the day:</p>
+<p><img src="/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/09.jpeg" alt="Rev 5 in use.&amp;nbsp;They got stickers for how many days they went without the need for repair.&amp;nbsp;" loading="lazy"></p>
+<p>Rev 5 in use. They got stickers for how many days they went without the need for repair.</p>
+<p>Some notes on timelines:</p>
+<ul><li>The whole process spanned roughly 3 weeks total.</li></ul>
+<ul><li>The majority of the work and the last 3 revisions were completed in less than 7 days.</li></ul>
+<ul><li>Rev 4 -&gt; rev 5 was completed in less than 24 hours.</li></ul>
+<p>Some notes on the problems encountered in the build:</p>
+<ul><li>When you use charge in a wire to communicate data (often called a signal) you better remember your physics.</li></ul>
+<ul><li>I still have a ton to learn about electronics and the design of electrical systems.</li></ul>
+<ul><li>Solving problems by yourself can lead to elegant solutions but you can get there faster with good friends.</li></ul>
+<ul><li>Starboard is my new favorite material. Seriously easy to work with.</li></ul>
+<p>There’s a lot more detail to this story and the context that prompted the need for this build but that really should be discussed <a href="mailto:gabeochoa@gmail.com">over a coffee</a>.</p>
+      </div>
+      <p class="post__back"><a href="/how/">← All posts</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Gabe Ochoa · Built static, hosted on GitHub Pages.</p>
+  </footer>
+</body>
+</html>

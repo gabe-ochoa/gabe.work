@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Med tracking and Reminders: How to Avert Human Error · How · Gabe Ochoa</title>
+  <meta name="description" content="There’s been some illness in my family lately. The kind that requires lots of doctor visits and medication. As with any major illnesses, half of the" />
+  <meta name="author" content="Gabe Ochoa" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Med tracking and Reminders: How to Avert Human Error · How · Gabe Ochoa" />
+  <meta property="og:description" content="There’s been some illness in my family lately. The kind that requires lots of doctor visits and medication. As with any major illnesses, half of the" />
+  <meta property="og:url" content="https://gabe.work/how/med-tracking-and-reminders-how-to-avert-human-error/" />
+  <meta property="og:image" content="https://gabe.work/assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://gabe.work/how/med-tracking-and-reminders-how-to-avert-human-error/" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#18181b" />
+  <link rel="alternate" type="application/rss+xml" title="How · Gabe Ochoa" href="/how/feed.xml" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="/">Gabe&nbsp;Ochoa</a>
+      <ul class="nav__links">
+        <li><a href="/#impact">Impact</a></li>
+        <li><a href="/#experience">Experience</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/how/">How</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a class="nav__resume" href="/assets/gabe-ochoa-resume.pdf">Résumé</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <p class="section__label"><a href="/how/">How</a></p>
+      <h1 class="post__title">Med tracking and Reminders: How to Avert Human Error</h1>
+      <p class="post__meta"><time datetime="2016-09-21">Sep 21, 2016</time> · Gabe Ochoa</p>
+      <div class="prose post__body">
+<p>There’s been some illness in my family lately. The kind that requires lots of doctor visits and medication. As with any major illnesses, half of the anxiety for both patients and care givers comes from remembering what medication to take when. So how do you avert human error? You systematize the medication and care cycle.</p>
+<p>I’ll walk through the steps to set up everything to a medication dashboard and reminder system.</p>
+<p>What I set up strings together:</p>
+<ul><li>Google Spreadsheet/Sheets API for input and a dashboard</li></ul>
+<ul><li>AWS Lambda for checking the next timing of every medication every 15 minutes</li></ul>
+<ul><li>AWS SNS for notifying the care givers when a medication can be given</li></ul>
+<p><strong>Disclaimer</strong>: This system is customized and pretty “dumb”. There are many hard coded things that could be made generic. I'm planning further work as needed but not on going.</p>
+<p>If you want to browse the files and sheets, head over to Github or Google Sheets. I’ll continue with a tutorial below the links.</p>
+<ul><li><a href="github.com/gabe-ochoa">Github page</a></li></ul>
+<ul><li><a href="https://docs.google.com/spreadsheets/d/1Hm5UL6oPZ49TPtTSb-miiPjQ8PhYO7WtUGtY_yfIFE0">Google Sheets</a></li></ul>
+<p>If you’ve never heard of AWS Lambda or SNS check out the links below:</p>
+<ul><li><a href="lambda.amzong.com">AWS Lambda</a></li></ul>
+<ul><li><a href="sns.amazon.com">AWS SNS</a></li></ul>
+<hr>
+<h2>Tutorial</h2>
+<h3>Google Sheets</h3>
+<p>First thing is the Google Sheet. This is set up for very easy input for the care givers and to show the available timing for each medication. You can use just this and it will make a huge difference by giving the care givers a simple place to enter medication disbursement and to see what times the meds can be given next.</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1Hm5UL6oPZ49TPtTSb-miiPjQ8PhYO7WtUGtY_yfIFE0/pubhtml">Click here to access the sheet</a>. Duplicate and clone it so you can use it for yourself. This setting is in the File menu in Google Sheets.</p>
+<p>Follow the instructions on each sheet. Fill in the medications and the dashboard / dropdown menus will take care of themselves. The Active column is used to select which medications are currently being given. These are the ones you’ll get notified for in the next section.</p>
+<p>Once that’s done all you have to do is select a medication from the dropdown menu, enter the time it was given, and the number of pills / capsules that were given. Based on the time given and the interval for the medication, the dashboard will update with the time for the next dose.</p>
+<h3>AWS SNS</h3>
+<p>You’ll need an <a href="https://aws.amazon.com/">AWS account</a> for this next portion. Luckily they’re easy to create and the services you’ll be using are cheap. It cost me $10/month to run and that’s with a lot of notifications everyday. Make an account and then head over to <a href="https://aws.amazon.com/sns/">Amazon SNS</a>(Simple Notification Service) in the AWS management console.</p>
+<p><img src="/assets/blog/med-tracking-and-reminders-how-to-avert-human-error/01.png" alt="" loading="lazy"></p>
+<p>Once there, create a new topic.</p>
+<p><img src="/assets/blog/med-tracking-and-reminders-how-to-avert-human-error/02.png" alt="" loading="lazy"></p>
+<p>Then create a SMS subscription to that topic. Enter in the phone number you want to get notifications on in the format +1 312 867 5309. Repeat this step for each phone you want to get the notifications to.</p>
+<p><img src="/assets/blog/med-tracking-and-reminders-how-to-avert-human-error/03.png" alt="" loading="lazy"></p>
+<p><img src="/assets/blog/med-tracking-and-reminders-how-to-avert-human-error/04.png" alt="" loading="lazy"></p>
+<p>The topic is what we’ll be sending data about the medications to. That topic will then forward it on to any subscriptions (phone numbers) you have added.</p>
+<p>Make note of the topic ARN. We’ll need this in a bit.</p>
+<h2>AWS Lambda</h2>
+<p>Next we’ll configure the AWS Lambda function that pulls the medication from the Google Sheet and sends it over to AWS SNS to text you if it’s within an hour of the next dose for a medication.</p>
+<p>Click into the AWS Lambda management console.</p>
+<p><img src="/assets/blog/med-tracking-and-reminders-how-to-avert-human-error/05.png" alt="" loading="lazy"></p>
+<p>Click Create a Lambda Function.</p>
+<p><img src="/assets/blog/med-tracking-and-reminders-how-to-avert-human-error/06.png" alt="" loading="lazy"></p>
+<p>On the Select Blueprint page, click Skip at the bottom.</p>
+<p>Add a CloudWatch Events - Schedule trigger. Enter a rule name, and the rate (schedule) of how often you want the function to check the medication timings. I chose every 30 minutes.</p>
+<p><img src="/assets/blog/med-tracking-and-reminders-how-to-avert-human-error/07.png" alt="" loading="lazy"></p>
+<p>On the next page, name your function and select Python 2.7 as the runtime. Under Code entry type select Upload a Zip file.</p>
+<p>Clone the github folder for the <a href="https://github.com/gabe-ochoa/lambda/tree/master/google_sheets_to_sns">google_sheets_to_sns lambda function</a>. Follow the instructions in the Readme to get Google credentials and modify the code. Once you’ve created the ZIP file, upload it as the function package.</p>
+<p>Enter google_sheets_to_sns.lambda_handler for the Handler.</p>
+<p>For Role, select Create a custom role. You’ll be taken to AWS IAM to create a role that allows your code to access the SNS topic you created earlier. Click View Policy Document and then Edit. Paste in the the sample role below replacing arn:aws:sns:us-west-2:&lt;account_number&gt;:notify-family-members with your AWS SNS Topic ARN from earlier. Then click Allow to save the new Role.</p>
+<pre><code>{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: [
+        &quot;logs:CreateLogGroup&quot;,
+        &quot;logs:CreateLogStream&quot;,
+        &quot;logs:PutLogEvents&quot;
+      ],
+      &quot;Resource&quot;: &quot;arn:aws:logs:*:*:*&quot;
+    },
+    {
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: [
+        &quot;sns:Publish&quot;
+      ],
+      &quot;Resource&quot;: [
+        &quot;arn:aws:sns:us-west-2:&lt;account_number&gt;:notify-family-members&quot;
+      ]
+   }
+  ]
+}</code></pre>
+<p>Leave all other settings. Click next to review the settings for your function. Then click Create function when everything looks good. Click test to watch the function run. If there are errors go ahead and fix them up.</p>
+<p>Congrats! Every 30 minutes your function will fire, check the google sheet for medications that are coming up, and send you a text about them! How great is that?</p>
+<hr>
+<p>Was this a bit complicated for the average person? Yes. Does it help you keep track of lots of medications you’re managing for someone you love and make sure you don’t miss medication? You bet.</p>
+<p>I’ll do another post on getting an Amazon Dash IOT button set up to be a call button so that you don’t have to be physically next to the person you are caring for. Very helpful in making them not feel alone and allowing the caregiver to move about the house without worrying.</p>
+<p>Comments and questions welcome as always.</p>
+<p>-Gabe</p>
+      </div>
+      <p class="post__back"><a href="/how/">← All posts</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Gabe Ochoa · Built static, hosted on GitHub Pages.</p>
+  </footer>
+</body>
+</html>

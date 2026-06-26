@@ -5,7 +5,132 @@
   <link>https://gabe.work/how/</link>
   <description>How things actually got done. The decisions, the dead ends, and what shipped.</description>
   <language>en-us</language>
-  <lastBuildDate></lastBuildDate>
-
+  <lastBuildDate>Wed, 21 Jun 2017 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Light vs Heavy Engineering</title>
+    <link>https://gabe.work/how/light-vs-heavy-engineering/</link>
+    <guid isPermaLink="true">https://gabe.work/how/light-vs-heavy-engineering/</guid>
+    <pubDate>Wed, 21 Jun 2017 00:00:00 +0000</pubDate>
+    <description>This is the start of a short series on Light vs Heavy Engineering, when one should be applied over the other, the processes used in each, and how to get</description>
+  </item>
+  <item>
+    <title>The Prepared Podcast</title>
+    <link>https://gabe.work/how/the-prepared-podcast/</link>
+    <guid isPermaLink="true">https://gabe.work/how/the-prepared-podcast/</guid>
+    <pubDate>Tue, 20 Jun 2017 00:00:00 +0000</pubDate>
+    <description>I was on The Prepared podcast this week chatting with Spencer and Zach about the order &amp; fulfillment management system I&#x27;m building for their relaunch of</description>
+  </item>
+  <item>
+    <title>Med tracking and Reminders: How to Avert Human Error</title>
+    <link>https://gabe.work/how/med-tracking-and-reminders-how-to-avert-human-error/</link>
+    <guid isPermaLink="true">https://gabe.work/how/med-tracking-and-reminders-how-to-avert-human-error/</guid>
+    <pubDate>Wed, 21 Sep 2016 00:00:00 +0000</pubDate>
+    <description>There’s been some illness in my family lately. The kind that requires lots of doctor visits and medication. As with any major illnesses, half of the</description>
+  </item>
+  <item>
+    <title>I am a mechanical engineer</title>
+    <link>https://gabe.work/how/i-am-a-mechanical-engineer/</link>
+    <guid isPermaLink="true">https://gabe.work/how/i-am-a-mechanical-engineer/</guid>
+    <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
+    <description>I am a mechanical engineer 3 years ago I was in San Fransisco looking for a job. Well, looking for leads of people to talk to that might have interesting</description>
+  </item>
+  <item>
+    <title>How to build a city: Hudson Yards</title>
+    <link>https://gabe.work/how/how-to-build-a-city-hudson-yards/</link>
+    <guid isPermaLink="true">https://gabe.work/how/how-to-build-a-city-hudson-yards/</guid>
+    <pubDate>Wed, 03 Feb 2016 00:00:00 +0000</pubDate>
+    <description>The longer I live in NYC the more I am fascinated by how such a large epicenter of human progress runs on a day to day basis. This encompasses urban</description>
+  </item>
+  <item>
+    <title>In search of a use case: Why your smart home isn’t that useful</title>
+    <link>https://gabe.work/how/in-search-of-a-use-case-why-your-smart-home-isnt-that-useful/</link>
+    <guid isPermaLink="true">https://gabe.work/how/in-search-of-a-use-case-why-your-smart-home-isnt-that-useful/</guid>
+    <pubDate>Wed, 21 Oct 2015 00:00:00 +0000</pubDate>
+    <description>The current state of the Smart Home can be one of awe but more times than not it’s a frustrating , hole ridden , maddening experience. There’s an</description>
+  </item>
+  <item>
+    <title>Building a Manufacturing Fixture in 3 Weeks.</title>
+    <link>https://gabe.work/how/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/</link>
+    <guid isPermaLink="true">https://gabe.work/how/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/</guid>
+    <pubDate>Tue, 06 Oct 2015 00:00:00 +0000</pubDate>
+    <description>I had the amazing opportunity of building a fixture to put new software on a product. Unfortunately it was not under the best of circumstances but that</description>
+  </item>
+  <item>
+    <title>The Exploration Process</title>
+    <link>https://gabe.work/how/the-exploration-process/</link>
+    <guid isPermaLink="true">https://gabe.work/how/the-exploration-process/</guid>
+    <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+    <description>There’s a story I’d like to share. It’s a story of little sleep as many of these kind are. How do you produce something you have the tools for but not the</description>
+  </item>
+  <item>
+    <title>Festival Gear: Not your average glow things</title>
+    <link>https://gabe.work/how/festival-gear-not-your-average-glow-things/</link>
+    <guid isPermaLink="true">https://gabe.work/how/festival-gear-not-your-average-glow-things/</guid>
+    <pubDate>Tue, 29 Sep 2015 00:00:00 +0000</pubDate>
+    <description>A very good way to get questioned at the airport I love things that glow. Most people do. Something about them screams future, life, presence. The only</description>
+  </item>
+  <item>
+    <title>Reality + : A more informed environment</title>
+    <link>https://gabe.work/how/reality-a-more-informed-environment/</link>
+    <guid isPermaLink="true">https://gabe.work/how/reality-a-more-informed-environment/</guid>
+    <pubDate>Tue, 09 Jun 2015 00:00:00 +0000</pubDate>
+    <description>Insert virtual reality rant here There is always a contingent of people in the techology sector looking for the next big environment - the next big</description>
+  </item>
+  <item>
+    <title>Split-Flip Display: Post 2, Research</title>
+    <link>https://gabe.work/how/split-flip-display-post-2-research/</link>
+    <guid isPermaLink="true">https://gabe.work/how/split-flip-display-post-2-research/</guid>
+    <pubDate>Tue, 09 Jun 2015 00:00:00 +0000</pubDate>
+    <description>Taredown! This is by far one of my favorite processes. In-fact I think it will ispire a new regular post - gabe breaks stuff. Also maybe another domain.</description>
+  </item>
+  <item>
+    <title>Split-Flip Display: Post 1, Inspiration</title>
+    <link>https://gabe.work/how/split-flip-display-post-1-inspiration/</link>
+    <guid isPermaLink="true">https://gabe.work/how/split-flip-display-post-1-inspiration/</guid>
+    <pubDate>Sun, 05 Apr 2015 00:00:00 +0000</pubDate>
+    <description>My projects normally start with coffee. or a walk. or both. In this case it also included a business trip to San Francisco during which I came across the</description>
+  </item>
+  <item>
+    <title>The Internet of Mindful Things: How we learned to stop worrying and love our connected devices.</title>
+    <link>https://gabe.work/how/the-internet-of-mindful-things-how-we-learned-to-stop-worrying-love-our-connected-devices/</link>
+    <guid isPermaLink="true">https://gabe.work/how/the-internet-of-mindful-things-how-we-learned-to-stop-worrying-love-our-connected-devices/</guid>
+    <pubDate>Tue, 31 Mar 2015 00:00:00 +0000</pubDate>
+    <description>It&#x27;s taken a few years - as any new technology does - but connected devices are finally starting to come into their own. I don&#x27;t mean there are more</description>
+  </item>
+  <item>
+    <title>Backpost 1: Building and Making: By Trial, Error, Elbow Grease, and Quick Learning</title>
+    <link>https://gabe.work/how/backpost-1-building-and-making-by-trial-error-elbow-grease-and-quick-learning/</link>
+    <guid isPermaLink="true">https://gabe.work/how/backpost-1-building-and-making-by-trial-error-elbow-grease-and-quick-learning/</guid>
+    <pubDate>Sat, 28 Mar 2015 00:00:00 +0000</pubDate>
+    <description>Title: Building and Making: By Trial, Error, Elbow Grease, and Quick Learning Date: 2012-09-17 This is The Building Experiment. A blog where I post</description>
+  </item>
+  <item>
+    <title>Backpost 2: The 4 Week Combat Robot Build Challenge: MowBo</title>
+    <link>https://gabe.work/how/backpost-1-the-4-week-combat-robot-build-challenge-mowbo/</link>
+    <guid isPermaLink="true">https://gabe.work/how/backpost-1-the-4-week-combat-robot-build-challenge-mowbo/</guid>
+    <pubDate>Sat, 28 Mar 2015 00:00:00 +0000</pubDate>
+    <description>Title: The 4 Week Combat Robot Build Challenge: MowBot Date: 2012-10-7 A little over a month ago it was mentioned in passing that there was going to be a</description>
+  </item>
+  <item>
+    <title>Backpost 3: The Phoenix Rises</title>
+    <link>https://gabe.work/how/backpost-3-the-phoenix-rises/</link>
+    <guid isPermaLink="true">https://gabe.work/how/backpost-3-the-phoenix-rises/</guid>
+    <pubDate>Sat, 28 Mar 2015 00:00:00 +0000</pubDate>
+    <description>Title: The Phoenix Rises Date: 2012-11-12 Backstory: After designing and building a 3lb combat robot in 4 weeks for the Atlanta Mini Marker Fair (AMMF), I</description>
+  </item>
+  <item>
+    <title>Backpost 4: Georgia Tech Invention Studio Sign</title>
+    <link>https://gabe.work/how/backpost-4/</link>
+    <guid isPermaLink="true">https://gabe.work/how/backpost-4/</guid>
+    <pubDate>Sat, 28 Mar 2015 00:00:00 +0000</pubDate>
+    <description>Title: Georgia Tech Invention Studio Sign Date: 2013-01-12 With the expansion of the Invention Studio at Georgia Tech, the shop was in need of a new sign</description>
+  </item>
+  <item>
+    <title>Backpost 5: Being a Printer Master: Managing Mass Printing in a Makerspace</title>
+    <link>https://gabe.work/how/backpost-5-being-a-printer-master-managing-mass-printing-in-a-makerspace/</link>
+    <guid isPermaLink="true">https://gabe.work/how/backpost-5-being-a-printer-master-managing-mass-printing-in-a-makerspace/</guid>
+    <pubDate>Sat, 28 Mar 2015 00:00:00 +0000</pubDate>
+    <description>Title: Being a Printer Master: Managing Mass Printing in a Makerspace Date: 2013-04-25 Check out this awesome post by my friend Jeff Landrum about being a</description>
+  </item>
 </channel>
 </rss>
