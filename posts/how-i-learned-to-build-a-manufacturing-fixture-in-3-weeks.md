@@ -89,7 +89,7 @@ Beauty ain’t she?
 
 The next 48 hours were a scramble to get the rest of the plastics, clean out two Radio Shacks of toggle switches, and soldering the new USB to spring pin harnesses for the 24 fixtures we needed. But at the end of the day:
 
-![Rev 5 in use.&nbsp;They got stickers for how many days they went without the need for repair.&nbsp;](/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/09.jpeg)
+![Rev 5 in use. They got stickers for how many days they went without the need for repair. ](/assets/blog/how-i-learned-to-build-a-manufacturing-fixture-in-3-weeks/09.jpeg)
 
 Rev 5 in use. They got stickers for how many days they went without the need for repair.
 

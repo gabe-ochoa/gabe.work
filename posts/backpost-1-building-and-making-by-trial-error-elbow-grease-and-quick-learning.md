@@ -4,10 +4,8 @@ date: 2015-03-28
 description: Title: Building and Making: By Trial, Error, Elbow Grease, and Quick Learning Date: 2012-09-17 This is The Building Experiment. A blog where I post
 slug: backpost-1-building-and-making-by-trial-error-elbow-grease-and-quick-learning
 redirect_from: /how/2015/3/28/backpost-1-building-and-making-by-trial-error-elbow-grease-and-quick-learning
-draft: false
+draft: true
 ---
-
-Title: Building and Making: By Trial, Error, Elbow Grease, and Quick Learning Date: 2012-09-17
 
 This is The Building Experiment. A blog where I post articles, reactions, cool videos, resources for makers and hobbyists like myself, and all the cool projects (both complex and mundane) that I have and am working on.
 

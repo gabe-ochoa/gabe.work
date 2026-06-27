@@ -13,7 +13,6 @@ There is always a contingent of people in the techology sector looking for the n
 
 These people are wrong. Virtual reality will have its place but it's not in the everyday nor is it the first thing you'll reach for in the morning when you get up. It's going to be an immersive gaming experience or a way to pre-view your vacation but it will not replace that vacation. We're not going to be become:
 
-Image shameless take from [@burenothebear](https://twitter.com/buenothebear)
 
 People like reality, people want reality, people love interacting with the world around them. What drives people away from the want to interact with their environment is the fear and anixiety created from the unknown and unfamilar. These barriers block information from being easily digested and recognized. What we want is Reality +.
 

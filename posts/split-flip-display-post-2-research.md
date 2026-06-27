@@ -4,7 +4,7 @@ date: 2015-06-09
 description: Taredown! This is by far one of my favorite processes. In-fact I think it will ispire a new regular post - gabe breaks stuff. Also maybe another domain.
 slug: split-flip-display-post-2-research
 redirect_from: /how/2015/6/9/split-flip-display-post-2-research
-draft: false
+draft: true
 ---
 
 Taredown! This is by far one of my favorite processes. In-fact I think it will ispire a new regular post - gabe breaks stuff. Also maybe another domain. But, to the taredown!
@@ -27,7 +27,7 @@ A few screws on the back....
 
 The front with rear casing removed. And my roommates cat.
 
-![ With the covering off you can really see the internals of the wheels and the small little motor.&nbsp; ](/assets/blog/split-flip-display-post-2-research/05.jpg)
+![ With the covering off you can really see the internals of the wheels and the small little motor.  ](/assets/blog/split-flip-display-post-2-research/05.jpg)
 
 With the covering off you can really see the internals of the wheels and the small little motor.
 
@@ -35,7 +35,7 @@ With the covering off you can really see the internals of the wheels and the sma
 
 Will I fits?
 
-![ One of the interesting parts are the two small levers that let you move the wheel (change the time) separately of each other. But if you make the minute wheel go from 59 -&gt; 0 the hour wheel will cycle to the next number. The implication of this i](/assets/blog/split-flip-display-post-2-research/07.jpg)
+![ One of the interesting parts are the two small levers that let you move the wheel (change the time) separately of each other. But if you make the minute wheel go from 59 -> 0 the hour wheel will cycle to the next number. The implication of this i](/assets/blog/split-flip-display-post-2-research/07.jpg)
 
 One of the interesting parts are the two small levers that let you move the wheel (change the time) separately of each other. But if you make the minute wheel go from 59 -> 0 the hour wheel will cycle to the next number. The implication of this is that the motor only has to drive one wheel and the other is linked. I am planning on keeping something like this in my design.
 
@@ -43,7 +43,7 @@ One of the interesting parts are the two small levers that let you move the whee
 
 Spring for the lever return as well as the cam housing for the hour wheel.
 
-![ Cam on the hour wheel.&nbsp; ](/assets/blog/split-flip-display-post-2-research/09.jpg)
+![ Cam on the hour wheel.  ](/assets/blog/split-flip-display-post-2-research/09.jpg)
 
 Cam on the hour wheel.
 
