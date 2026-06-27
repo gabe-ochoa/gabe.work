@@ -11,7 +11,7 @@ I had the amazing opportunity of building a fixture to put new software on a pro
 
 Queue [The Process](https://gabe.work/how/2015/10/3/the-exploration-process).
 
-I had started this project and gone through the first three iterations prior to the hard deadline being imposed. The first two iterations were done as an exploration but I shelved it and tried another method. What I was doing just did not work. To be honest, those first two revisions were total shit. But they’re supposed to be as you stumble over your own two feet.
+I had started this project and gone through the first three iterations prior to the hard deadline being imposed. The first two iterations were done as an exploration but I shelved it and tried another method. What I was doing just did not work. To be honest, those first two revisions were genuinely bad. But they’re supposed to be as you stumble over your own two feet.
 
 There were 3 main things I had to tackle with this build:
 
@@ -111,4 +111,4 @@ Some notes on the problems encountered in the build:
 
 - Starboard is my new favorite material. Seriously easy to work with.
 
-There’s a lot more detail to this story and the context that prompted the need for this build but that really should be discussed [over a coffee](mailto:gabeochoa@gmail.com).
+There’s a lot more detail to this story and the context that prompted the need for this build but that really should be discussed [over a coffee](/#contact).

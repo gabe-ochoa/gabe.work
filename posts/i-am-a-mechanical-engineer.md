@@ -35,6 +35,6 @@ Given the above journey, I am now more than ever an Engineer. Hardware, software
 
 - Thoughts from my infrastructure work at Wink and on-going learnings.
 
-Interested in the above? [Let’s chat](mailto:gabeochoa@gmail.com)
+Interested in the above? [Let’s chat](/#contact)
 
 Here we go.

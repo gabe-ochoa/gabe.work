@@ -28,7 +28,7 @@ BLOG_BASE = "/how"          # URL path for the blog
 OUT_DIR = "how"             # output directory (mirrors BLOG_BASE)
 AUTHOR = "Gabe Ochoa"
 BLOG_TITLE = "How"
-BLOG_TAGLINE = "How things actually got done. The decisions, the dead ends, and what shipped."
+BLOG_TAGLINE = "An archive of writing on building things: the decisions, the dead ends, and what shipped."
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS_DIR = os.path.join(ROOT, "posts")
@@ -56,10 +56,10 @@ def _inline(text):
     text = html.escape(text, quote=False)
 
     # 3) images before links (overlapping syntax)
-    text = re.sub(r"!\[([^\]]*)\]\(([^)\s]+)\)",
+    text = re.sub(r"!\[([^\]]*)\]\(((?:[^()\s]|\([^()\s]*\))+)\)",
                   r'<img src="\2" alt="\1" loading="lazy">', text)
     # 4) links
-    text = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)",
+    text = re.sub(r"\[([^\]]+)\]\(((?:[^()\s]|\([^()\s]*\))+)\)",
                   r'<a href="\2">\1</a>', text)
     # 5) bold then italic
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
@@ -194,9 +194,8 @@ NAV = '''  <header class="site-header">
     <nav class="nav" aria-label="Primary">
       <a class="nav__brand" href="/">Gabe&nbsp;Ochoa</a>
       <ul class="nav__links">
-        <li><a href="/#impact">Impact</a></li>
-        <li><a href="/#experience">Experience</a></li>
         <li><a href="/#about">About</a></li>
+        <li><a href="/#experience">Experience</a></li>
         <li><a href="{blog}/">How</a></li>
         <li><a href="/#contact">Contact</a></li>
         <li><a class="nav__resume" href="/assets/gabe-ochoa-resume.pdf">Résumé</a></li>
