@@ -231,6 +231,7 @@ def page(title, description, canonical, body, extra_head=""):
   <meta name="theme-color" content="#18181b" />
   <link rel="alternate" type="application/rss+xml" title="How · Gabe Ochoa" href="{blog}/feed.xml" />
   <link rel="stylesheet" href="/styles.css" />
+  <script defer data-domain="gabe.work" src="https://analytics.1365prospect.nyc/js/script.js"></script>
 {extra}</head>
 <body>
 {nav}
