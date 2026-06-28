@@ -1,0 +1,42 @@
+name: Build and publish site
+
+# When a post lands on main (markdown only), rebuild the static HTML and commit
+# it back so GitHub Pages (deploy-from-branch) serves the new content. Merge = publish.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/**'
+      - 'build.py'
+  workflow_dispatch: {}   # manual rebuild button in the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # stay on main so we can push back
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Build site
+        run: python3 build.py
+      - name: Commit generated HTML
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish."
+            exit 0
+          fi
+          git commit -m "build: publish site [skip ci]"
+          git push
