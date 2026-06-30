@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gabe Ochoa, Engineering Leader</title>
-  <meta name="description" content="Gabe Ochoa is an engineering leader. Fifteen years building real products and the teams that ship them, from hardware to data observability at Datadog." />
+  <meta name="description" content="Gabe Ochoa is an engineering leader. Fifteen years building real products and the teams that ship them, from hardware to storage and data platforms at Datadog." />
   <meta name="author" content="Gabe Ochoa" />
 
   <!-- Open Graph / social -->
@@ -32,7 +32,7 @@
     "name": "Gabe Ochoa",
     "alternateName": "Gabriel Ochoa",
     "url": "https://gabe.work",
-    "description": "Engineering leader. Fifteen years building real products and the teams that ship them, from hardware prototypes to data observability.",
+    "description": "Engineering leader. Fifteen years building real products and the teams that ship them, from hardware prototypes to storage and data platforms.",
     "jobTitle": "Senior Engineering Manager",
     "worksFor": { "@type": "Organization", "name": "Datadog" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Georgia Institute of Technology" },
@@ -45,6 +45,10 @@
     "knowsAbout": [
       "Engineering Leadership",
       "Engineering Management",
+      "Storage Systems",
+      "Distributed Databases",
+      "Postgres",
+      "Key-Value Stores",
       "Data Observability",
       "Site Reliability Engineering",
       "Kubernetes",
@@ -87,8 +91,9 @@
       <h1 class="hero__title">I build things people use, and the teams that&nbsp;ship&nbsp;them.</h1>
       <p class="hero__lede">
         I'm an engineering leader at Datadog, fifteen years in. I started in hardware and worked my
-        way through infrastructure to running engineering teams. Most recently I took a new product
-        from nothing to $5M in annual revenue. I like hard problems, small teams, and shipping.
+        way through infrastructure to running engineering teams. These days I lead Transactional
+        Storage; before that I took a new product from nothing to $5M in annual revenue. I like
+        hard problems, small teams, and shipping.
       </p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="#experience">See the work</a>
@@ -129,10 +134,24 @@
       <article class="role">
         <div class="role__head">
           <h2 class="role__org">Datadog</h2>
-          <p class="role__meta"><span class="role__title">Senior Engineering Manager, APM Data Observability</span> · New York · Oct 2023 – Present</p>
+          <p class="role__meta"><span class="role__title">Senior Engineering Manager, Transactional Storage</span> · New York · May 2025 – Present</p>
         </div>
         <ul class="role__points">
-          <li>Lead engineering for the APM Data Observability suite (14 engineers).</li>
+          <li>Lead the Transactional Storage org (5 teams, 10+ engineers), owning Datadog's application data storage platforms: Postgres, UnifiedKV, Search, Data Replication, and Caching.</li>
+          <li>Cut <strong>~$160K/month ($2M/year)</strong> in infrastructure cost in a single quarter: migrated Postgres shards across 6 data centers to shared compute in under 4 weeks, deleted unused staging clusters, and right-sized production fleets.</li>
+          <li>Set direction for application data storage: migrated off Cassandra and removed Mongo platform support, consolidating onto the internal KV database and Postgres PaaS.</li>
+          <li>Reset a stalled rewrite of the in-house KV storage engine and shipped it to GA: 2× load absorbed in &lt;10 minutes, 30% lower cost, and better performance at scale.</li>
+          <li>Matured the Frames data stability platform — 20+ new use cases, higher intake availability — and folded it into Caching to remove product overlap.</li>
+        </ul>
+      </article>
+
+      <article class="role">
+        <div class="role__head">
+          <h2 class="role__org">Datadog</h2>
+          <p class="role__meta"><span class="role__title">Senior Engineering Manager, APM Data Observability</span> · New York · Oct 2023 – May 2025</p>
+        </div>
+        <ul class="role__points">
+          <li>Led engineering for the APM Data Observability suite (14 engineers).</li>
           <li>Incubated and grew two new products (Data Streams &amp; Data Jobs Monitoring) for the data-engineer persona, winning new accounts.</li>
           <li>Scaled Data Streams Monitoring from pre-revenue to <strong>$5M ARR in 12 months</strong>.</li>
           <li>Took Data Jobs Monitoring from private beta to GA: 20% MoM revenue growth in its first 6 months post-GA.</li>
