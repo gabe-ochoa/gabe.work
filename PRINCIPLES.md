@@ -33,8 +33,8 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
   When the résumé changes, reconcile the site.
 - Reverse-chronological experience. Most recent first.
 - Trim bullets ruthlessly. 3 to 6 per role on the site. Depth lives in the PDF.
-- "Selected impact" holds the four strongest, most quantified wins. If a new win
-  beats one, swap it. Four cards, no more.
+- No stat-card grid. It reads as an AI template. The numbers live inside the
+  Experience bullets where they have context.
 - Keep the PDF résumé current and linked. It is the one download that matters.
 
 ## 4. Design
@@ -78,9 +78,7 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
   regularly; a detailed case study for a flagship project. Each new thing must
   carry its weight and follow every principle above.
 - **The "How" blog** at `/how/` is the sanctioned writing section: posts that
-  detail how things actually got done. It earns its build step only if it stays
-  alive. A blog with two stale posts looks worse than no blog. Publish on a real
-  cadence or don't publish. Posts follow the voice rules in §2.
+  detail how things actually got done. Posts follow the voice rules in §2.
 - One page is a feature, not a limitation. Stay single-page until there's a real
   reason not to.
 
