@@ -196,7 +196,6 @@ NAV = '''  <header class="site-header">
       <ul class="nav__links">
         <li><a href="/#about">About</a></li>
         <li><a href="/#experience">Experience</a></li>
-        <li><a href="{blog}/">How</a></li>
         <li><a href="/#contact">Contact</a></li>
         <li><a class="nav__resume" href="/assets/gabe-ochoa-resume.pdf">Résumé</a></li>
       </ul>
@@ -362,9 +361,8 @@ def render_404():
       a different host, so some bookmarks won't resolve here anymore.</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="/">Home</a>
-        <a class="btn" href="{blog}/">Read "How"</a>
       </div>
-    </section>'''.format(blog=BLOG_BASE)
+    </section>'''
     return page("Page not found · Gabe Ochoa", "Page not found.", SITE_URL + "/404", body)
 
 

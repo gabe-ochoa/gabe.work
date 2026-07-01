@@ -33,8 +33,8 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
   When the résumé changes, reconcile the site.
 - Reverse-chronological experience. Most recent first.
 - Trim bullets ruthlessly. 3 to 6 per role on the site. Depth lives in the PDF.
-- "Selected impact" holds the four strongest, most quantified wins. If a new win
-  beats one, swap it. Four cards, no more.
+- No stat-card grid. It reads as an AI template. The numbers live inside the
+  Experience bullets where they have context.
 - Keep the PDF résumé current and linked. It is the one download that matters.
 
 ## 4. Design
