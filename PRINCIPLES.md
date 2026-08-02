@@ -19,7 +19,10 @@ take a meeting with Gabe. They have two minutes. Earn them.
 Canonical spec: `dotfiles/agent/guides/personal/writing-voice.md`. Calibrated
 from Gabe's blog (gabe.work/how). Read it before writing copy. The short version:
 
-- Short sentences. Specific numbers. No hedging.
+- Narrative sentences that carry their own reasoning, with a short line to land
+  the point. Not a wall of clipped fragments. Uniform sentence length is the
+  single clearest sign a model wrote the copy, so vary it on purpose: a 4-word
+  sentence should sit next to a 35-word one. Specific numbers. No hedging.
 - Lead with the real noun, not the adjective. "Teams that ship," not
   "high-performing teams." Show the trait, don't label it.
 - No corporate jargon. No "synergies," no "passionate about leveraging."
