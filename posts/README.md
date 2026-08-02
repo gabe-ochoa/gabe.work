@@ -1,0 +1,60 @@
+# Writing posts for "How"
+
+**The "How" blog is retired.** These markdown files are the migration source
+for a future standalone blog site. Don't publish new posts here: the `/how/`
+pages are archived (noindexed, out of the nav) and only stay served so old
+links keep working. See PRINCIPLES.md §6.
+
+Posts live here as markdown. Run `python3 build.py` from the repo root to
+regenerate the archive HTML into `how/`.
+
+## A post looks like this
+
+```
+---
+title: How we cut deploy time from 90 minutes to 5
+date: 2026-06-26
+description: One sentence that shows up in the list, the RSS feed, and link previews.
+draft: true
+---
+
+Your first paragraph. Write like you talk. Short sentences. Concrete nouns.
+
+## A section heading
+
+More text.
+```
+
+## Frontmatter fields
+
+- `title` — required. Also the page `<h1>`.
+- `date` — required, `YYYY-MM-DD`. Controls ordering (newest first) and the feed.
+- `description` — one line. Shows in the post list, RSS, and social previews.
+- `draft` — `true` keeps it out of the published build. Omit (or `false`) to publish.
+- `slug` — optional. Defaults to the filename. Sets the URL: `/how/<slug>/`.
+- `redirect_from` — optional, comma-separated old paths (e.g.
+  `/how/2017/6/21/old-slug`). Generates a static redirect stub at each so old
+  links land on this post. Used to preserve the old Squarespace URLs.
+
+## Supported markdown
+
+A deliberate, small subset for prose:
+
+- `##` to `######` headings (the post title is already the `<h1>`, so start at `##`)
+- **bold** with `**` , *italic* with `*`, `inline code` with backticks
+- links `[text](url)` and images `![alt](url)`
+- `-` or `1.` lists (single level)
+- `>` blockquotes
+- fenced code blocks with triple backticks
+- `---` for a horizontal rule
+
+The converter does NOT do smart quotes or emdash substitution. What you type is
+what ships, which keeps the no-emdash rule intact. Voice rules live in
+`PRINCIPLES.md` and `dotfiles/agent/guides/personal/writing-voice.md`.
+
+## Workflow
+
+1. Draft a `.md` here (start with `draft: true`).
+2. `python3 build.py --drafts` to preview drafts, or `python3 build.py` for the real build.
+3. Preview locally: `python3 -m http.server 8000`, visit `http://localhost:8000/how/`.
+4. When it's ready, flip `draft` off, rebuild, commit, push.

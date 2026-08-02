@@ -1,0 +1,207 @@
+/* gabe.work — minimal, document-like personal site.
+   One narrow column, prose first, in the spirit of quiet personal pages
+   like mitchellh.com. Zero dependencies, no build, no framework.
+   Edit content in index.html. Design rules live in PRINCIPLES.md. */
+
+:root {
+  --ink:        #18181b;   /* primary text */
+  --ink-soft:   #52525b;   /* secondary text */
+  --ink-faint:  #71717a;   /* meta, dates — AA contrast on --bg (~4.7:1) */
+  --bg:         #fafaf8;   /* warm paper */
+  --bg-card:    #ffffff;
+  --rule:       #e7e5e0;   /* hairlines */
+  --accent:     #c2410c;   /* ember — the single accent */
+  --accent-ink: #9a3412;
+
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-sans:  ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:  ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --column: 42rem;
+  --pad: clamp(1.25rem, 5vw, 2rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:       #ececec;
+    --ink-soft:  #b4b4b8;
+    --ink-faint: #8b8b93;   /* AA contrast on dark --bg (~5.3:1) */
+    --bg:        #161617;
+    --bg-card:   #1e1e20;
+    --rule:      #2c2c2f;
+    --accent:    #fb923c;
+    --accent-ink:#fdba74;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--accent); color: #fff; }
+
+a {
+  color: var(--accent-ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+a:hover { color: var(--accent); }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--accent); color: #fff; padding: 0.6rem 1rem; z-index: 100;
+}
+.skip-link:focus { left: 0.5rem; top: 0.5rem; border-radius: 4px; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* ---- layout shell: one narrow column ---- */
+.site-header, main, .site-footer {
+  max-width: var(--column);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+/* ---- header ---- */
+.site-header { padding-top: 2.75rem; }
+.nav {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 0.5rem 1.25rem; flex-wrap: wrap;
+}
+.nav__brand {
+  font-family: var(--font-serif); font-weight: 600; font-size: 1.1rem;
+  letter-spacing: -0.01em; color: var(--ink); text-decoration: none;
+}
+.nav__brand:hover { color: var(--accent-ink); }
+.nav__links {
+  display: flex; align-items: baseline; gap: 0.25rem 1.1rem; flex-wrap: wrap;
+  list-style: none; margin: 0; padding: 0;
+  font-size: 0.9rem;
+}
+.nav__links a { color: var(--ink-soft); text-decoration: none; }
+.nav__links a:hover { color: var(--accent-ink); text-decoration: underline; }
+
+/* ---- main document ---- */
+main { padding-top: clamp(2.75rem, 8vw, 4.5rem); }
+
+h1 {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: clamp(1.9rem, 1.5rem + 2vw, 2.5rem);
+  line-height: 1.12; letter-spacing: -0.02em;
+  margin: 0 0 1.5rem; text-wrap: balance;
+}
+
+main h2 {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: 1.4rem; letter-spacing: -0.01em;
+  margin: 3.25rem 0 1rem;
+}
+
+main p { margin: 0 0 1.1rem; }
+
+.intro__lede {
+  font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.4;
+  letter-spacing: -0.01em; margin-bottom: 1.4rem; text-wrap: balance;
+}
+
+/* ---- plain lists (principles, projects) ---- */
+.principles, .projects { list-style: none; margin: 0 0 1.1rem; padding: 0; }
+.principles li { margin-bottom: 1rem; color: var(--ink-soft); }
+.principles strong { color: var(--ink); font-weight: 600; }
+.projects li { margin-bottom: 0.6rem; color: var(--ink-soft); }
+.projects strong { color: var(--ink); font-weight: 600; }
+
+/* ---- work history ---- */
+.work { list-style: none; margin: 0; padding: 0; }
+.work__item { margin-bottom: 2rem; }
+.work__head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 0.25rem 1rem; flex-wrap: wrap;
+}
+.work__title { font-weight: 600; }
+.work__dates {
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em;
+  color: var(--ink-faint); white-space: nowrap;
+}
+.work__summary { margin: 0.4rem 0 0; color: var(--ink-soft); }
+.work__footnote { color: var(--ink-faint); font-size: 0.92rem; }
+
+/* ---- contact ---- */
+.contact__links {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+}
+
+/* ---- footer ---- */
+.site-footer {
+  margin-top: 4.5rem; padding-block: 2rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-faint); font-size: 0.85rem;
+}
+.site-footer p { margin: 0; }
+
+/* ---- retired "How" archive: index ---- */
+.blog-tagline { color: var(--ink-soft); }
+
+.post-list { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+.post-list__item { margin-bottom: 1.6rem; }
+.post-list__link {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 0.25rem 1rem; flex-wrap: wrap; text-decoration: none;
+}
+.post-list__title { font-weight: 600; color: var(--ink); }
+.post-list__link:hover .post-list__title { color: var(--accent-ink); text-decoration: underline; }
+.post-list__date {
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em;
+  color: var(--ink-faint); white-space: nowrap;
+}
+.post-list__desc { margin: 0.25rem 0 0; color: var(--ink-soft); font-size: 0.95rem; }
+.post-list__empty { color: var(--ink-faint); }
+
+/* ---- retired "How" archive: post pages ---- */
+.post__crumb { font-size: 0.9rem; margin: 0 0 1.75rem; }
+.post__crumb a { color: var(--ink-soft); text-decoration: none; }
+.post__crumb a:hover { color: var(--accent-ink); }
+.post__title { margin-bottom: 0.5rem; }
+.post__meta {
+  margin: 0 0 2.25rem; color: var(--ink-faint);
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em;
+}
+.post__body h2 { margin: 2.25rem 0 0.9rem; }
+.post__body h3 {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: 1.15rem; margin: 1.75rem 0 0.7rem;
+}
+.post__body ul, .post__body ol { margin: 0 0 1.1rem; padding-left: 1.3rem; color: var(--ink-soft); }
+.post__body li { margin-bottom: 0.4rem; }
+.post__body blockquote {
+  margin: 0 0 1.1rem; padding: 0.25rem 0 0.25rem 1.1rem;
+  border-left: 2px solid var(--accent); color: var(--ink-soft); font-style: italic;
+}
+.post__body code {
+  font-family: var(--font-mono); font-size: 0.88em;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  padding: 0.1em 0.35em; border-radius: 4px;
+}
+.post__body pre {
+  background: var(--bg-card); border: 1px solid var(--rule); border-radius: 8px;
+  padding: 1rem 1.15rem; overflow-x: auto; margin: 0 0 1.4rem;
+}
+.post__body pre code { background: none; padding: 0; font-size: 0.85rem; }
+.post__body img { max-width: 100%; height: auto; border-radius: 8px; }
+.post__body hr { border: 0; border-top: 1px solid var(--rule); margin: 2.25rem 0; }
+.post__back { margin-top: 2.75rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+.post__back a { font-size: 0.92rem; color: var(--ink-soft); text-decoration: none; }
+.post__back a:hover { color: var(--accent-ink); }
