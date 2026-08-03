@@ -34,6 +34,16 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
   growth rates) and it isn't in their public record, fuzz it to a magnitude
   ("seven figures", "multi-million") or get sign-off. Ratios and timelines
   ("2x load", "under 4 weeks") are safer than absolutes.
+- **Never name an internal system or project.** This is the hard line, tighter
+  than the numbers rule above. Codenames and pre-launch project names do not go
+  on the site in any form. Describe the thing instead: "an in-house key-value
+  database," never the codename. Verify before assuming a product name is
+  public, because some ship under a different name than they were built under.
+  Check the employer's own product pages and docs, not your memory.
+- What is safe to be specific about: performance and cost characteristics
+  ("2x load in under 10 minutes", "30% lower cost"), headcounts, org shape,
+  interview counts, and timelines. Be concrete with these. The line is names and
+  unfuzzed money, not specificity itself.
 
 ## 3. Content rules
 
