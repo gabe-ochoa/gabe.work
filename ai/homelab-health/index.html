@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giving an agent a useful health check · Gabe Ochoa</title><meta name="description" content="How a read-only CLI gathers homelab evidence and keeps missing data visible to an agent.">
+<link rel="canonical" href="https://gabe.work/ai/homelab-health/"><meta property="og:title" content="Giving an agent a useful health check · Gabe Ochoa"><meta property="og:description" content="How a read-only CLI gathers homelab evidence and keeps missing data visible to an agent."><meta property="og:url" content="https://gabe.work/ai/homelab-health/"><meta property="og:type" content="website"><meta property="og:image" content="https://gabe.work/assets/og.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/ai/playground.css">
+</head>
+<body><a class="skip-link" href="#content">Skip to content</a><header class="site-header"><nav class="nav" aria-label="Primary"><a class="nav__brand" href="/">Gabe Ochoa</a><a href="/ai/">How I use AI</a></nav></header>
+<main id="content"><h1>Giving an agent a useful health check</h1>
+<p class="intro__lede">Before an agent can help fix something, it needs a reliable way to see what is broken.</p>
+<p>My homelab runs services on Kubernetes, with Flux applying the configuration I keep in Git. Checking its health means looking at several layers: the machines, the running workloads, and whether the configuration has actually been applied. I built one CLI to gather those observations and return structured results an agent can read.</p>
+<p>The tool does not need a model to decide whether a read failed or a workload is ready. Those checks belong in code. The agent can use the resulting evidence to explain a problem and choose the next investigation, without having to reconstruct the same collection sequence every time.</p>
+<ol class="flow" aria-label="Health investigation workflow"><li><strong>Collect</strong><span>Machines, workloads and configuration readiness</span></li><li><strong>Summarize</strong><span>Counts, current issues and collection errors</span></li><li><strong>Investigate</strong><span>The agent interprets evidence and proposes next checks</span></li><li><strong>Verify</strong><span>A fresh observation after any authorized repair</span></li></ol>
+<h2 id="demo">Three reports that mean different things</h2><p>These are shortened, fictional results. Expand each one to see what an agent can conclude. Nothing here queries or changes my homelab.</p>
+<div class="demo">
+<details><summary>All reads succeeded, with no detected issues</summary><pre>{
+  "healthy": true,
+  "complete": true,
+  "issues": [],
+  "collection_errors": []
+}</pre><p>The tool found no problems in the resources it checked. That is useful evidence, but it does not prove every application works. A service could still return errors while its containers are ready.</p></details>
+<details><summary>A workload is repeatedly crashing</summary><pre>{
+  "healthy": false,
+  "complete": true,
+  "issues": [{
+    "resource": "pods",
+    "name": "example-worker",
+    "reasons": ["CrashLoopBackOff"]
+  }],
+  "collection_errors": []
+}</pre><p>Collection succeeded and there is a current issue to investigate. The agent can propose looking at the failing workload’s logs or recent changes. This report alone does not tell it the root cause, and the health command does not restart anything.</p></details>
+<details><summary>The workload read timed out</summary><pre>{
+  "healthy": false,
+  "complete": false,
+  "issues": [],
+  "collection_errors": [{
+    "resource": "pods",
+    "reason": "timeout"
+  }]
+}</pre><p>An empty issue list does not mean the system is healthy. The tool could not finish collecting evidence, so the result stays incomplete and does not report health. The agent should explain the gap and investigate or retry the failed read.</p></details>
+</div>
+<h2>Keep the observations</h2><p>The CLI can save a snapshot and summarize it again without contacting the cluster. That lets me reproduce what the tool saw and check the summarizer against the same inputs, instead of debugging against a system that has already changed.</p>
+<p>A replay is historical evidence. After a repair, I need a fresh collection to know what changed. A stored snapshot cannot establish the current health of the cluster.</p>
+<details><summary>What the real tool collects</summary><p><code>homelab-health</code> reads nodes, pods, Flux Kustomizations and HelmReleases concurrently, with bounded query timeouts. It checks readiness, current container failures, node pressure and whether configuration generations have been reconciled.</p><p>The tool returns JSON and a nonzero exit code for unhealthy or incomplete results. It can save observations with <code>--save-snapshot</code> and replay them with <code>--from-snapshot</code>. Snapshots omit pod specifications, logs and raw messages, but retain resource names. I still treat them as infrastructure data, and the examples here are fictional.</p></details>
+<h2>Where the AI fits</h2><p>I want the agent to spend its attention on the question the evidence raises: what changed, what should we inspect next, and how will we know a repair worked? Giving it one bounded tool for the exact collection work makes those questions easier to answer.</p>
+<p class="next-story"><a href="/ai/local-decisions/">See how a CLI can use model judgment →</a></p>
+</main><footer class="site-footer"><p>Gabe Ochoa · Personal tools, explained. <a href="/ai/">All AI stories</a></p></footer></body></html>

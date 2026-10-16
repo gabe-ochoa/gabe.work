@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Picking up where an agent left off · Gabe Ochoa</title><meta name="description" content="How task checkpoints preserve decisions, next steps and verification across agent sessions.">
+<link rel="canonical" href="https://gabe.work/ai/agent-checkpoints/"><meta property="og:title" content="Picking up where an agent left off · Gabe Ochoa"><meta property="og:description" content="How task checkpoints preserve decisions, next steps and verification across agent sessions."><meta property="og:url" content="https://gabe.work/ai/agent-checkpoints/"><meta property="og:type" content="website"><meta property="og:image" content="https://gabe.work/assets/og.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/ai/playground.css">
+</head>
+<body><a class="skip-link" href="#content">Skip to content</a><header class="site-header"><nav class="nav" aria-label="Primary"><a class="nav__brand" href="/">Gabe Ochoa</a><a href="/ai/">How I use AI</a></nav></header>
+<main id="content"><h1>Picking up where an agent left off</h1>
+<p class="intro__lede">I want to resume the work without reconstructing the whole conversation.</p>
+<p>An agent can make progress for a while, then lose the context that explains why it made a decision. A fresh session might see the files but miss the unresolved question, or run a check that was already made obsolete by a later edit. I built a checkpoint CLI to give the next session a concrete place to start.</p>
+<p>A checkpoint records the goal, the decisions, the next action, and the verification work. It points to the actual artifacts. The design document still lives with the project, because a short handoff should help me find the work rather than become another copy of it.</p>
+<ol class="flow" aria-label="Checkpoint workflow"><li><strong>Save</strong><span>Goal, decisions, next action and artifact references</span></li><li><strong>Resume</strong><span>Read the handoff and inspect the current files</span></li><li><strong>Verify</strong><span>Run a concrete check and record the result</span></li><li><strong>Finish</strong><span>Complete after successful verification, or explicitly record a manual override</span></li></ol>
+<h2 id="demo">Explore a handoff</h2><p>This fictional task is a workshop signup page. Expand each stage to see what the next agent gets. These examples run no commands.</p>
+<div class="demo">
+<details><summary>1. The first session saves its place</summary><pre>Goal: Build the workshop signup page.
+Decision: Keep the form on one page.
+Artifact: The signup page and its design notes.
+Next action: Check keyboard navigation after the latest edit.
+Verification: Run the form interaction checks.
+Status: Open.</pre><p>The next action is specific enough to start work. “Keep improving the page” would leave the next session guessing about what was unfinished.</p></details>
+<details><summary>2. A new session resumes the task</summary><p>The agent reads the checkpoint, opens the referenced files, and checks their current state. It learns why the form stays on one page and that keyboard behavior still needs verification.</p><p>The handoff is context, not proof that the files are unchanged. The new session still has to inspect them.</p></details>
+<details><summary>3. Verification fails</summary><pre>Check: Form interaction checks
+Exit code: 1
+Finding: Submitting an empty form does not focus the error.
+Checkpoint status: Open.</pre><p>The agent can fix the focus behavior and run the check again. A failed completion check is recorded, but it does not turn the task into completed work.</p></details>
+<details><summary>4. The fix passes its check</summary><pre>Check: Form interaction checks
+Exit code: 0
+Outcome: Error focus and keyboard submission checked.
+Checkpoint status: Complete.</pre><p>The completion record keeps a short outcome and links to the artifact, so the work log can explain what finished. This check supports a specific claim about the form; it does not establish that every aspect of the page is correct.</p></details>
+</div>
+<h2>Why this is a tool</h2><p>I could ask the agent to write a paragraph before stopping, but then completion would just be another sentence it wrote. The CLI runs the verification command and records its exit code. The agent supplies context; the program enforces that completion requires either a successful check or an explicit manual override.</p>
+<details><summary>What I use in the real workflow</summary><p><code>agent-checkpoint save</code> creates or updates a named handoff. <code>resume</code> renders it for the next session. <code>verify --run</code> records a check while keeping the task open, and <code>complete --run</code> runs verification before completing it. A manual override is available when command verification does not fit, and it must be explicit.</p><p>I reuse a checkpoint name while a task continues. When work is abandoned or replaced, I close or supersede the old checkpoint so it stops looking like unfinished work I still intend to do.</p></details>
+<p class="next-story"><a href="/ai/homelab-health/">Next: giving an agent a useful health check →</a></p>
+</main><footer class="site-footer"><p>Gabe Ochoa · Personal tools, explained. <a href="/ai/">All AI stories</a></p></footer></body></html>
