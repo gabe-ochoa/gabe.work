@@ -127,4 +127,5 @@ Small, dependency-free local scripts may power these demos. Reading the stories
 must still work without JavaScript. Demos use fictional data and clearly label
 preset model responses. They do not access private accounts, call models or
 execute real operations. Keep the existing typography, themes and accessibility
-requirements. Link from Projects rather than expanding the homepage narrative.
+requirements. A dedicated homepage index and navigation link make these stories easy to find.
+Keep the career introduction focused.
