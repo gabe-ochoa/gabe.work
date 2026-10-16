@@ -116,3 +116,15 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
 
 Before shipping a change, ask: does this make the work clearer to someone with
 two minutes, or just busier? Ship the first. Cut the second.
+
+## 8. Personal AI system stories (October 2026)
+
+Gabe authorized /ai/ as a place to explain personal tools and agent workflows
+to friends. These illustrated system stories are a deliberate exception to
+the career-only and single-page scope. The retired /how/ archive stays retired.
+
+Small, dependency-free local scripts may power these demos. Reading the stories
+must still work without JavaScript. Demos use fictional data and clearly label
+preset model responses. They do not access private accounts, call models or
+execute real operations. Keep the existing typography, themes and accessibility
+requirements. Link from Projects rather than expanding the homepage narrative.
