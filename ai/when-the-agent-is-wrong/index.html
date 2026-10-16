@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When the agent gets it wrong · Gabe Ochoa</title><meta name="description" content="A documented morning-report mistake: treating an old access assumption as fact, and the checks added afterward.">
+<link rel="canonical" href="https://gabe.work/ai/when-the-agent-is-wrong/"><meta property="og:title" content="When the agent gets it wrong · Gabe Ochoa"><meta property="og:description" content="A documented morning-report mistake: treating an old access assumption as fact, and the checks added afterward."><meta property="og:url" content="https://gabe.work/ai/when-the-agent-is-wrong/"><meta property="og:type" content="website"><meta property="og:image" content="https://gabe.work/assets/og.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/ai/playground.css">
+</head>
+<body><a class="skip-link" href="#content">Skip to content</a><header class="site-header"><nav class="nav" aria-label="Primary"><a class="nav__brand" href="/">Gabe Ochoa</a><a href="/ai/">How I use AI</a></nav></header>
+<main id="content"><h1>When the agent gets it wrong</h1>
+<p class="intro__lede">The report looked useful, but it had stopped reading an important source.</p>
+<p>Earlier versions of my morning-report workflow carried an explanation that notes written by my note-taking app could not be read directly because of the machine’s sandbox. The workflow treated that explanation as settled and substituted earlier morning reports for the current weekly note.</p>
+<p>That substitution missed live content. The failure was recorded in the workflow’s own history, and a later check found that direct file reads worked. The earlier diagnosis was wrong, or the restriction had changed. Either way, carrying it forward without checking made the report less accurate.</p>
+<ol class="flow" aria-label="Failure and correction"><li><strong>Assume</strong><span>An old access diagnosis becomes a standing rule</span></li><li><strong>Substitute</strong><span>Earlier reports replace the current source</span></li><li><strong>Miss</strong><span>Current work never enters the new report</span></li><li><strong>Correct</strong><span>Attempt the read and account for the evidence</span></li></ol>
+<h2 id="demo">See the consequence</h2><p>The failure above is documented. The task names below are fictional examples that illustrate how it can happen.</p>
+<div class="demo"><details><summary>Yesterday’s report</summary><pre>Open task: Arrange the workshop tour.</pre><p>This tells us what yesterday’s report believed was open. It does not establish what is open now.</p></details>
+<details><summary>Today’s weekly note</summary><pre>Tour is arranged.
+New task: Prepare the equipment checklist.</pre><p>Reading this source changes both parts of the work list: one task is finished and a new task needs attention.</p></details>
+<details><summary>A report built from the substitute</summary><pre>Open task: Arrange the workshop tour.</pre><p>The output can be neatly formatted and still omit the new work. Repeating an old report gives it no new evidence.</p></details>
+<details><summary>The corrected rule</summary><p>Attempt the source read before declaring it unavailable. If it fails, record the actual failure and make the gap visible. Check current evidence before surfacing an old task as open work.</p><p>The real workflow also requires its declared integrations to pass a preflight. A missing required connection stops report generation. Other source reads must have contribution evidence or an explicit accounting of why they did not contribute.</p></details></div>
+<h2>What changed</h2><p>The workflow now explicitly tells the agent to try the read, use the current notes, and avoid reconstructing the task list from old reports. It also requires source accounting so that a missing input cannot disappear behind a polished summary.</p>
+<p>Those are workflow rules, and an agent can still fail to follow them. I would not call the problem impossible now. What improved is that the expected behavior and the evidence needed to check it are written down.</p>
+<p class="next-story"><a href="/ai/morning-report/">Explore the morning report workflow →</a></p>
+</main><footer class="site-footer"><p>Gabe Ochoa · Personal tools, explained. <a href="/ai/">All AI stories</a></p></footer></body></html>

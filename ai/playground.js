@@ -19,15 +19,32 @@ if (morning) {
 }
 const cli = document.querySelector("[data-cli]");
 if (cli) {
-  const handlers = new Map([
-    ["storage", "Selected handler: inspectStorage. In the real tool, this would collect volume and mount health through a named read-only operation."],
-    ["network", "Selected handler: inspectNetwork. This label is valid, but the evidence supports storage. A bounded choice can still be a bad judgment."]
-  ]);
+  const handlers = new Map([["storage", "inspectStorage"], ["network", "inspectNetwork"]]);
+  const storage = cli.querySelector("#storage-evidence");
+  const network = cli.querySelector("#network-evidence");
+  const response = cli.querySelector("#response");
+  const decide = () => storage.value === "failed" && network.value !== "failed" ? "storage" : network.value === "failed" && storage.value !== "failed" ? "network" : null;
+  const render = () => {
+    const suggested = decide();
+    const choice = response.value;
+    const label = choice === "auto" ? suggested : choice === "unknown" ? null : choice === "invalid" ? "repair_everything" : choice;
+    const gap = storage.value === "unknown" || network.value === "unknown";
+    cli.querySelector("[data-evidence]").textContent = `Storage: ${storage.selectedOptions[0].textContent}. Network: ${network.selectedOptions[0].textContent}.` + (gap ? " Evidence is incomplete." : "");
+    cli.querySelector("[data-model]").textContent = choice === "unavailable" ? "Inference unavailable: no response received." : "Simulated response: " + JSON.stringify({label}, null, 2);
+    let result;
+    if (choice === "unavailable") result = "Unresolved. Keep the evidence; no handler selected.";
+    else if (label === null) result = "Abstained. No handler selected. Ask for more evidence or use the caller’s documented safe fallback.";
+    else if (!handlers.has(label)) result = "Rejected: label is outside the allowed options. No handler selected.";
+    else {
+      result = `Selected handler: ${handlers.get(label)}.`;
+      if (label !== suggested) result += " This is an allowed label, but it disagrees with the demo rules for the current evidence. A valid response can still be a bad judgment.";
+      if (gap) result += " An unchecked subsystem remains an evidence gap.";
+      result += " Demo only: nothing was executed.";
+    }
+    cli.querySelector("[data-result]").textContent = result;
+  };
+  cli.querySelectorAll("select").forEach(select => select.addEventListener("change", render));
+  cli.querySelector("[data-run]").addEventListener("click", render);
   cli.querySelector(".controls").hidden = false;
-  cli.querySelector("[data-run]").addEventListener("click", () => {
-    const choice = cli.querySelector("select").value;
-    const label = choice === "unknown" ? null : choice === "invalid" ? "repair_everything" : choice;
-    cli.querySelector("[data-model]").textContent = choice === "unavailable" ? "Inference unavailable: no response received." : JSON.stringify({label}, null, 2);
-    cli.querySelector("[data-result]").textContent = choice === "unavailable" ? "Unresolved. Keep the evidence; no handler selected." : label === null ? "Abstained. No handler selected. Ask for more evidence or use the caller’s documented safe fallback." : handlers.has(label) ? handlers.get(label) + " Demo only: nothing was executed." : "Rejected: label is outside the allowed options. No handler selected.";
-  });
+  render();
 }
