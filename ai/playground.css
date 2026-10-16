@@ -11,3 +11,5 @@ details:not([open]) > :not(summary) {display:none}
 .nav > a,.next-story a,.stories > li > a {display:inline-flex;align-items:center;min-height:44px}
 
 .evidence-controls {display:grid;grid-template-columns:1fr;max-width:100%}.evidence-controls select {width:100%}.evidence-controls button {justify-self:start}
+
+.recipe-index a {display:inline-flex;align-items:center;min-height:44px}
