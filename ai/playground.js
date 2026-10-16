@@ -48,3 +48,60 @@ if (cli) {
   cli.querySelector(".controls").hidden = false;
   render();
 }
+
+const reportBuilder = document.querySelector("[data-report-builder]");
+if (reportBuilder) {
+  const form = reportBuilder.querySelector("form");
+  const source = form.querySelector("#report-sources");
+  const tour = form.querySelector("#report-tour");
+  const equipment = form.querySelector("#report-equipment");
+  const output = reportBuilder.querySelector("[data-built-report]");
+  const status = reportBuilder.querySelector("[data-report-status]");
+  const renderReport = () => {
+    output.replaceChildren();
+    const add = (tag, content) => {
+      const element = document.createElement(tag);
+      element.textContent = content;
+      output.append(element);
+      return element;
+    };
+    if (source.value === "blocked") {
+      add("h3", "Preflight stopped: no report generated");
+      add("p", "The required document connection is unavailable. Restore it and rerun preflight before gathering the report. No task list is generated from partial connections.");
+      status.textContent = "Preflight blocked. No report generated. Nothing executed.";
+      return;
+    }
+    add("h3", "Proposed morning report");
+    const prepare = [];
+    const approval = ["Send the workshop announcement. Source: message. Drafting can happen before approval; sending cannot."];
+    const personal = ["Have the 10:00 conversation. Source: calendar. The agent can help prepare."];
+    const questions = [];
+    const blocked = [];
+    if (source.value === "ready") prepare.push("Summarize the workshop proposal. Sources: note and message, reconciled into one task; proposal document read successfully.");
+    else blocked.push("Proposal summary: the document read failed. Keep the request from the note and message, but do not invent a summary.");
+    if (tour.value === "pending") approval.push("Follow up about Thursday’s tour. Sources: note and pending calendar invitation. Ask before contacting the other person.");
+    if (equipment.value === "draft") prepare.push("Draft the equipment checklist for review. Source: explicitly delegated note.");
+    else if (equipment.value === "send") approval.push("Send the equipment checklist to the group. Source: note. Sending needs separate approval.");
+    else questions.push("What outcome is wanted for the equipment question? Source: ambiguous note. Ask rather than guess.");
+    const groups = [["Agent can prepare", prepare], ["Needs approval", approval], ["Needs me", personal], ["Needs clarification", questions], ["Blocked on evidence", blocked]];
+    for (const [title, rows] of groups) {
+      if (!rows.length) continue;
+      add("h4", `${title} (${rows.length})`);
+      const list = add("ul", "");
+      for (const row of rows) {
+        const item = document.createElement("li"); item.textContent = row; list.append(item);
+      }
+    }
+    add("h4", "Reconciliation notes");
+    add("p", tour.value === "accepted" ? "Tour follow-up removed: both attendees accepted. Duplicate summary requests combined while retaining both source references." : "Tour follow-up retained: the invitation is pending. Duplicate summary requests combined while retaining both source references.");
+    add("h4", "Source accounting");
+    add("p", "Notes: contributed. Messages: contributed. Calendar: contributed. Documents: " + (source.value === "ready" ? "proposal read successfully. Skipped: none among these four modeled sources." : "proposal read failed; no document contents used. Skipped: proposal document (read failed)."));
+    add("p", "Nothing has started or been sent. I choose the next action after reviewing the report.");
+    status.textContent = `Report updated: ${prepare.length} preparation, ${approval.length} approval, ${personal.length} personal, ${questions.length} clarification, ${blocked.length} blocked. Nothing executed.`;
+  };
+  form.addEventListener("change", renderReport);
+  form.addEventListener("submit", event => event.preventDefault());
+  form.addEventListener("reset", () => { setTimeout(renderReport, 0); });
+  form.hidden = false;
+  renderReport();
+}
