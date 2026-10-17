@@ -1,35 +1,62 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Picking up where an agent left off · Gabe Ochoa</title><meta name="description" content="How task checkpoints preserve decisions, next steps and verification across agent sessions.">
-<link rel="canonical" href="https://gabe.work/ai/agent-checkpoints/"><meta property="og:title" content="Picking up where an agent left off · Gabe Ochoa"><meta property="og:description" content="How task checkpoints preserve decisions, next steps and verification across agent sessions."><meta property="og:url" content="https://gabe.work/ai/agent-checkpoints/"><meta property="og:type" content="website"><meta property="og:image" content="https://gabe.work/assets/og.png">
+<title>What happened between the goal and “done” · Gabe Ochoa</title><meta name="description" content="Why I built Agent Checkpoint: useful handoffs, recorded session history, and verification I can review.">
+<link rel="canonical" href="https://gabe.work/ai/agent-checkpoints/"><meta property="og:title" content="What happened between the goal and “done” · Gabe Ochoa"><meta property="og:description" content="Why I built Agent Checkpoint: useful handoffs, recorded session history, and verification I can review."><meta property="og:url" content="https://gabe.work/ai/agent-checkpoints/"><meta property="og:type" content="website"><meta property="og:image" content="https://gabe.work/assets/og.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/ai/playground.css">
 </head>
 <body><a class="skip-link" href="#content">Skip to content</a><header class="site-header"><nav class="nav" aria-label="Primary"><a class="nav__brand" href="/">Gabe Ochoa</a><a href="/ai/">How I use AI</a></nav></header>
-<main id="content"><h1>Picking up where an agent left off</h1>
-<p class="intro__lede">I want to resume the work without reconstructing the whole conversation.</p>
-<p>An agent can make progress for a while, then lose the context that explains why it made a decision. A fresh session might see the files but miss the unresolved question, or run a check that was already made obsolete by a later edit. I built a checkpoint CLI to give the next session a concrete place to start.</p>
-<p>A checkpoint records the goal, the decisions, the next action, and the verification work. It points to the actual artifacts. The design document still lives with the project, because a short handoff should help me find the work rather than become another copy of it.</p>
-<ol class="flow" aria-label="Checkpoint workflow"><li><strong>Save</strong><span>Goal, decisions, next action and artifact references</span></li><li><strong>Resume</strong><span>Read the handoff and inspect the current files</span></li><li><strong>Verify</strong><span>Run a concrete check and record the result</span></li><li><strong>Finish</strong><span>Complete after successful verification, or explicitly record a manual override</span></li></ol>
-<h2 id="demo">Explore a handoff</h2><p>This fictional task is a workshop signup page. Expand each stage to see what the next agent gets. These examples run no commands.</p>
+<main id="content"><h1>What happened between the goal and “done”</h1>
+<p class="intro__lede">I wanted an agent to pick up where it left off. Then I wanted to see how it got there.</p>
+<p>Coding work doesn’t always fit inside one conversation. The agent makes a decision, changes a few files, runs a check, and then the session runs out of room or I switch to something else. The code survives, but the next session has to reconstruct why we made that decision and what still needs work.</p>
+<p>I built Agent Checkpoint to save that context under a task name: the goal, decisions, blockers, next action, and links to the actual work. It started in my dotfiles. We’ve now pulled it into a <a href="https://github.com/gabe-ochoa/agent-checkpoint">public repository</a> so you can use it without adopting the rest of my setup.</p>
+<p>The handoff solved the immediate problem, but as work moved between sessions I also wanted to review how it had progressed.</p>
+<h2>A checkpoint is a place to start</h2>
+<p>A fresh session should be able to find the design, understand the decision to keep the grammar small, and see that empty input still needs a test. That gives it a concrete next action, while the full design and code stay in the project where they belong.</p>
+<p>Finishing needs more than a good summary. The CLI can run a verification command and record its exit code, so a failed check leaves the task open and a successful check can complete it. Manual overrides are explicit. I can distinguish the check that ran from an agent saying it checked something.</p>
+<ol class="flow" aria-label="Checkpoint workflow"><li><strong>Save</strong><span>Record the goal, decisions, blockers and next action.</span></li><li><strong>Resume</strong><span>Read the handoff and inspect the current files.</span></li><li><strong>Verify</strong><span>Run a concrete check and keep its result.</span></li><li><strong>Review</strong><span>Look back at how the task progressed across sessions.</span></li></ol>
+<h2 id="demo">The history is a feature</h2>
+<p>When I’m running several tasks, the latest checkpoint only tells me where each one ended up. I also want to see when the goal changed, which session picked it up, where verification failed, and what passed before the agent called it done.</p>
+<p>Here’s a fictional workshop signup page moving through two sessions. The entries below illustrate recorded events; they are not output from a real project. Expand each stage to follow the work. Nothing here runs commands.</p>
 <div class="demo">
-<details><summary>1. The first session saves its place</summary><pre>Goal: Build the workshop signup page.
+<details open><summary>1. Session A starts the task</summary><pre>09:00 · Goal saved
+Build a workshop signup page.
 Decision: Keep the form on one page.
-Artifact: The signup page and its design notes.
-Next action: Check keyboard navigation after the latest edit.
-Verification: Run the form interaction checks.
-Status: Open.</pre><p>The next action is specific enough to start work. “Keep improving the page” would leave the next session guessing about what was unfinished.</p></details>
-<details><summary>2. A new session resumes the task</summary><p>The agent reads the checkpoint, opens the referenced files, and checks their current state. It learns why the form stays on one page and that keyboard behavior still needs verification.</p><p>The handoff is context, not proof that the files are unchanged. The new session still has to inspect them.</p></details>
-<details><summary>3. Verification fails</summary><pre>Check: Form interaction checks
-Exit code: 1
-Finding: Submitting an empty form does not focus the error.
-Checkpoint status: Open.</pre><p>The agent can fix the focus behavior and run the check again. A failed completion check is recorded, but it does not turn the task into completed work.</p></details>
-<details><summary>4. The fix passes its check</summary><pre>Check: Form interaction checks
-Exit code: 0
+Next: Check keyboard navigation.
+Agent: builder · Session: A</pre><p>The first session leaves enough context to continue, including where the work is and what it still needs to verify.</p></details>
+<details><summary>2. The goal changes</summary><pre>09:12 · Goal changed
+Build a workshop signup page with accessible error handling.
+Decision: Focus the first invalid field after submission.
+Agent: builder · Session: A</pre><p>The current checkpoint carries the updated goal. The history preserves the earlier goal too, so I can review the change in scope instead of trying to remember what we originally asked for.</p></details>
+<details><summary>3. Session B takes over and the check fails</summary><pre>09:20 · Handoff recorded
+From: builder / Session A
+To: reviewer / Session B
+Next: Check error focus and keyboard submission.
+
+09:24 · Verification started
+09:24 · Verification finished · Exit code: 1
+Task status: Open</pre><p>The failed attempt stays in the history. If another update makes a result stale while a check is running, the tool records the conflict rather than completing the newer work with that result.</p></details>
+<details><summary>4. The fix passes</summary><pre>09:31 · Verification started
+09:31 · Verification finished · Exit code: 0
+09:31 · Task completed
 Outcome: Error focus and keyboard submission checked.
-Checkpoint status: Complete.</pre><p>The completion record keeps a short outcome and links to the artifact, so the work log can explain what finished. This check supports a specific claim about the form; it does not establish that every aspect of the page is correct.</p></details>
+Agent: reviewer · Session: B</pre><p>Now I can follow the recorded progression from the first goal through a scope change, a handoff, a failed check, and a successful one. The successful check supports a specific claim about the form. It doesn’t prove that every part of the page is correct.</p></details>
 </div>
-<h2>Why this is a tool</h2><p>I could ask the agent to write a paragraph before stopping, but then completion would just be another sentence it wrote. The CLI runs the verification command and records its exit code. The agent supplies context; the program enforces that completion requires either a successful check or an explicit manual override.</p>
-<details><summary>What I use in the real workflow</summary><p><code>agent-checkpoint save</code> creates or updates a named handoff. <code>resume</code> renders it for the next session. <code>verify --run</code> records a check while keeping the task open, and <code>complete --run</code> runs verification before completing it. A manual override is available when command verification does not fit, and it must be explicit.</p><p>I reuse a checkpoint name while a task continues. When work is abandoned or replaced, I close or supersede the old checkpoint so it stops looking like unfinished work I still intend to do.</p></details>
-<p><a href="/ai/setup/">Set this up with your own agent →</a></p>
+<h2>Observability belongs in the tool</h2>
+<p>Once the history existed, I wanted to query it. <code>history</code> follows one task, <code>timeline</code> brings recorded events together, and <code>stats</code> summarizes things like verification results, handoffs and time spent blocked. Agent and session identities can be recorded explicitly, which lets me follow work as it moves between them.</p>
+<p>This is the trajectory the tool records. It doesn’t capture every tool call or the model’s private reasoning, and it doesn’t guess what happened in an old session. When existing checkpoints are imported, they appear as labeled baseline snapshots. Earlier steps are unknown.</p>
+<p>I also wanted the history to survive a broken latest-state file, so committed JSON event batches are the source of truth and the current checkpoint files can be rebuilt from them. There’s no SQLite database and no runtime package dependency. Python 3.11 or later is enough to run the tool on macOS or Linux, with Git for repository awareness.</p>
+<p>For an existing observability setup, there’s optional OpenTelemetry export over HTTP: logs for recorded events and traces for verification attempts. The exporter uses the Python standard library. By default it omits task content and hashes identities; including content is an explicit choice. Export only happens when requested.</p>
+<h2>Use it in your own project</h2>
+<p>The <a href="https://github.com/gabe-ochoa/agent-checkpoint">repository</a> has installation instructions, the CLI reference, and integration examples. From a checkout, the offline installer needs no pip or build dependencies:</p>
+<pre><code>python3 scripts/install.py</code></pre>
+<p>Once the command is on your path, start with one task and a check that means something for that project:</p>
+<pre><code>agent-checkpoint save --name signup \
+  --goal "Build the signup page" --next "Run form checks"
+agent-checkpoint complete signup --run "make test" \
+  --note "Form checks passed"
+agent-checkpoint history signup --json</code></pre>
+<p>Use your actual verification command in place of <code>make test</code>. The standalone installer installs the CLI; connecting session hooks is a separate integration step described in the repository.</p>
+<p>I still want to spend my time defining the problem and making the important calls, then let the agent carry the work forward. A useful handoff helps it continue. A recorded history gives me something concrete to review when I come back.</p>
+<p><a href="/ai/setup/#agent-checkpoints">Set this up with your own agent →</a></p>
 <p class="next-story"><a href="/ai/homelab-health/">Next: giving an agent a useful health check →</a></p>
 </main><footer class="site-footer"><p>Gabe Ochoa · Personal tools, explained. <a href="/ai/">All AI stories</a></p></footer></body></html>
