@@ -6,7 +6,6 @@
 </head>
 <body><a class="skip-link" href="#content">Skip to content</a><header class="site-header"><nav class="nav" aria-label="Primary"><a class="nav__brand" href="/">Gabe Ochoa</a><a href="/ai/">How I use AI</a></nav></header>
 <main id="content"><h1>AI on my own machine</h1>
-<p class="intro__lede">Some of the AI in my tools runs on the same Mac as the tools.</p>
 <p>I use a local model for small decisions where language matters: choosing a diagnostic branch, ranking relevant context, or classifying an item. The configured setup described in my tooling uses Qwen3-4B through MLX on Apple Silicon. A local service makes the model available to the command-line tools.</p>
 <p>The point is to make a bounded judgment close to the program that needs it. Ordinary code still parses the response, checks the option, and controls what happens next.</p>
 <ol class="flow" aria-label="Local inference workflow"><li><strong>CLI</strong><span>A question, evidence and allowed options</span></li><li><strong>Local service</strong><span>MLX inference on the Mac’s loopback interface</span></li><li><strong>Response</strong><span>An allowed label or an explicit unresolved result</span></li><li><strong>Caller</strong><span>Validation, permissions and any authorized action</span></li></ol>
@@ -18,4 +17,4 @@
 <h2>What I keep small</h2><p>A short decision with a few options fits this setup better than an oversized session transcript. The caller validates the response, keeps permissions in code, and has a useful result when the model abstains. Those constraints matter more than making every tool use AI.</p>
 <p><a href="/ai/setup/">Set this up with your own agent →</a></p>
 <p class="next-story"><a href="/ai/local-decisions/#demo">Change the evidence in the CLI demo →</a></p>
-</main><footer class="site-footer"><p>Gabe Ochoa · Personal tools, explained. <a href="/ai/">All AI stories</a></p></footer></body></html>
+</main><footer class="site-footer"><p>Gabe Ochoa · <a href="/ai/">All AI stories</a></p></footer></body></html>

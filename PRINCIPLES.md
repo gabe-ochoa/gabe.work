@@ -27,6 +27,12 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
   "high-performing teams." Show the trait, don't label it.
 - No corporate jargon. No "synergies," no "passionate about leveraging."
 - Never use emdashes. Use periods, commas, or colons.
+- No labels above headings or decorative slogans. Supporting text and captions
+  must add facts, context, or instructions the reader needs. Remove repeated
+  promises and summaries that only restate the heading or nearby copy. Keep
+  functional navigation, source labels, demo instructions, and useful alt text.
+  Run `voice-lint` on extracted prose, then review the rendered page for
+  repetition the lint cannot judge.
 - Lead with outcomes, not responsibilities. "Cut deploy time from 1.5 hours to
   5 minutes," not "responsible for deployment tooling."
 - Every claim is true, defensible, and Gabe's to publish. If a number can't be
