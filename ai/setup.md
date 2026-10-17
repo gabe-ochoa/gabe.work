@@ -1,12 +1,12 @@
 # Recreate these workflows with your own agent
 
-Version: 1. Updated: 2026-10-16.
+Version: 2. Updated: 2026-10-16.
 Canonical URL: https://gabe.work/ai/setup.md
 Human overview: https://gabe.work/ai/setup/
 
 ## Status and scope
 
-These are standalone adaptation recipes, not an installer or a distribution of Gabe's tools. The current CLI implementations are in a private repository. The browser demos are simulations and are not production implementations. Do not infer that a command mentioned in a story is installed on the reader's machine.
+Most workflows here are adaptation recipes. Agent Checkpoint is available as a standalone public tool at https://github.com/gabe-ochoa/agent-checkpoint. Use that implementation for checkpoint storage, history and verification instead of rebuilding it from this guide. The browser demos are simulations and are not production implementations. Do not infer that a command mentioned in a story is installed on the reader's machine.
 
 Use the reader's own tools, accounts, paths and policy. Do not copy Gabe's employer context, identity, credentials, directories or permission rules as the reader's own. Never scrape private material to reconstruct missing implementation details.
 
@@ -75,15 +75,23 @@ Fixed responses cover every allowed label, null, malformed output, a disallowed 
 
 Story: https://gabe.work/ai/agent-checkpoints/
 
-### Implementation contract
+### Install the public tool
 
-Store project-scoped records with a stable ID/name, goal, decisions, next action, artifact references, status, and verification history. Make save/update, resume, verify, complete, close and supersede explicit operations. Validate identifiers and write records atomically. Keep full artifacts in their project and link to them from checkpoints.
+Source and reference: https://github.com/gabe-ochoa/agent-checkpoint
 
-A verification operation runs an owner-authorized command and records its actual exit code. Completion requires successful verification or an explicit manual override with a reason. A failed check leaves the task open. Old checks are historical evidence and must not imply later edits have been verified.
+Inspect the upstream README and integration documentation. Agent Checkpoint requires Python 3.11+ on macOS or Linux, with Git for repository awareness. It has no runtime package dependencies and uses JSON event batches, not SQLite. From a reviewed checkout, `python3 scripts/install.py` installs the CLI without pip or build dependencies. Follow the owner's install policy and verify command discovery afterward. The installer does not install agent hooks.
+
+### Integration contract
+
+Use the upstream CLI or supported `agent_checkpoint.integration` API. Choose the owner's state directory and preserve existing state. Keep complete artifacts in their projects and reference them from checkpoints. Record agent/session IDs when available; leave unknown identity explicit. Reuse the task name as the work progresses.
+
+Run an owner-authorized verification command through `verify --run` or `complete --run`. A failed completion check leaves the task open. Manual overrides remain distinguishable from executed verification. Review recorded progression with `history`, `timeline` and `stats`. These views cover recorded events, not every model action or private reasoning.
+
+Before importing existing state, back it up and stop legacy writers. Imported snapshots are labeled baselines, not reconstructed session history. Optional OpenTelemetry export is explicit. Default export omits task content and hashes identities. Including content or sending to a collector needs the owner's selected destination and authorization.
 
 ### Acceptance checks
 
-Save and resume preserve the goal and next step. Updating does not create a duplicate open task. A failing completion check records failure and leaves status open. A passing check records completion and artifact references. Manual completion is distinguishable from verified completion. Superseded work stops appearing as an open continuation candidate. Tests use an isolated temporary state directory and never modify real checkpoints.
+Use an isolated temporary state directory. Save a goal, update it, hand off between explicit sessions, and confirm the history retains those events. A failing completion command records failure and leaves the task open; a passing command records completion. Confirm imported baselines are labeled, timeline/stats can be queried, and export works without sending data unless an endpoint is selected. Test installed hooks separately with synthetic transcripts. Do not modify real checkpoints as a test.
 
 ## Homelab health
 
