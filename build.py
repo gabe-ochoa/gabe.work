@@ -233,7 +233,7 @@ def page(title, description, canonical, body, extra_head="", noindex=False):
   <link rel="icon" href="/assets/favicon.ico" sizes="32x32" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#18181b" />
+  <meta name="theme-color" content="#f2f3e7" />
   <link rel="alternate" type="application/rss+xml" title="How · Gabe Ochoa" href="{blog}/feed.xml" />
   <link rel="stylesheet" href="/styles.css" />
   <script defer data-domain="gabe.work" src="https://analytics.1365prospect.nyc/js/script.js"></script>

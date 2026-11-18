@@ -57,25 +57,38 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
   truth for facts. The site is a sharper, scannable cut of it, not a fork.
   When the résumé changes, reconcile the site.
 - Reverse-chronological experience. Most recent first.
-- Each role is a short prose summary, 2 to 3 sentences carrying the strongest
-  numbers. No bullet walls on the site. Depth lives in the PDF.
+- Each role is the company, the dates, the title, then a short prose summary,
+  2 to 3 sentences carrying the strongest numbers. No bullet walls on the site. Depth lives in the PDF.
 - No stat-card grid. It reads as an AI template. The numbers live inside the
   Work summaries where they have context.
 - Keep the PDF résumé current and linked. It is the one download that matters.
 
 ## 4. Design
 
-- A quiet, document-like personal page in the spirit of mitchellh.com: one
-  narrow column (~42rem), prose first, plain lists with dates on the right.
-  No hero, no buttons, no card grids, no sticky chrome. It should read like a
-  well-set page, not a landing page.
-- Minimal and typographic. Whitespace and hierarchy do the work, not decoration.
-- One accent color (`--accent`, currently ember). Used sparingly: labels, links,
-  one button, the impact stat sources. Never two accents.
-- Serif for display (name, headings, stats). Sans for body. Mono for labels.
-- System fonts only. No web-font network request. Fast and offline-safe.
+Redesigned November 2026 because the previous look (off-white paper, grey
+text, orange links, serif headings over sans body) read as agent-made.
+
+- The page is set like an engineer's computation pad, which is what a
+  mechanical engineer does their thinking on: green-tinted paper, a ruled left
+  margin, DIN lettering for names and labels, a book serif for the prose. The
+  reference is real and it is Gabe's. Keep it subtle. No grid under the text,
+  no fake title blocks, no drafting props.
+- Homepage layout: the name is the masthead. Section labels sit in the ruled
+  margin and the content sits to its right (about 42rem). On a phone the margin
+  collapses and labels sit above their content. Inner pages keep one 42rem column.
+- Still a document, not a landing page. No hero art, no buttons, no card
+  grids, no sticky chrome.
+- One accent color (`--accent`, pad green). It rules lines and underlines
+  links. Body text and links stay ink-colored. Never two accents.
+- DIN for display (`--font-display`), serif for text (`--font-text`), mono
+  only for code. Dates are DIN with tabular figures, not mono.
+- System fonts only. No web-font network request. The stacks name the DIN and
+  serif each platform ships (DIN Alternate and Charter on Apple, Bahnschrift and
+  Sitka on Windows), so check a fallback platform before changing them.
 - Respect `prefers-color-scheme`. Light and dark must both look deliberate.
 - The page should look finished on a phone first. Then scale up.
+- Favicon, app icons, and `assets/og.png` are rendered from the same palette
+  and type. Regenerate them if either changes.
 
 ## 5. Technical constraints
 

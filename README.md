@@ -16,7 +16,7 @@ hosted on GitHub Pages at [gabe.work](https://gabe.work).
 Everything is hand-editable. There is nothing to compile or run.
 
 - **Add or change a role:** edit the `<li class="work__item">` blocks in `index.html`.
-  Each role is a one-line head (org · title, dates) plus a short prose summary.
+  Each role is a head (company, dates), a title line, and a short prose summary.
 - **Replace the résumé:** drop a new PDF at `assets/gabe-ochoa-resume.pdf`.
 - **Change the look:** the design tokens (colors, fonts, spacing) are CSS custom
   properties at the top of `styles.css`. The accent color lives in `--accent`.
