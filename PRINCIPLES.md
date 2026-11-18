@@ -46,8 +46,11 @@ from Gabe's blog (gabe.work/how). Read it before writing copy. The short version
   database," never the codename. Verify before assuming a product name is
   public, because some ship under a different name than they were built under.
   Check the employer's own product pages and docs, not your memory.
+- No team or engineer counts for Gabe's current org. They are internal
+  specifics and they pull attention from the narrative. Some ambiguity helps.
+  Describe what the org runs instead. (Gabe, 2026-11-18.)
 - What is safe to be specific about: performance and cost characteristics
-  ("2x load in under 10 minutes", "30% lower cost"), headcounts, org shape,
+  ("2x load in under 10 minutes", "30% lower cost"), headcounts and org shape for past roles,
   interview counts, and timelines. Be concrete with these. The line is names and
   unfuzzed money, not specificity itself.
 
