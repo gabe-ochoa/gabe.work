@@ -27,3 +27,19 @@ Validation:
 Preview command: site-snap http://127.0.0.1:8013/#projects --dark --wait-ms 2500
 Exact section screenshots: /tmp/gabe-work-founded-companies/projects-*.png.
 Rollback: revert the website-update commit.
+
+## Web One description follow-up
+
+Added Gabe's supplied description: buying, renting, and selling IPv4 addresses
+like real estate. This adds no dates, financial results or market claims.
+
+- Projects prose: voice-lint 100/100, no findings; git diff --check passed.
+- site-snap at 1440px and 390px in light and dark: zero errors; the same
+  existing mobile Work navigation tap-target warning remains.
+- Visually reviewed exact Projects screenshots in all four combinations.
+  Copy wraps cleanly and the existing visual identity is preserved.
+- Rendered desktop and mobile decorative-copy deletion pass: no deletion
+  needed. The new sentence explains the business, and all remaining
+  supporting copy keeps the factual purpose recorded above.
+- Resume PDF remains byte-for-byte unchanged.
+- Screenshots: /tmp/gabe-work-web-one-description/projects-*.png.
