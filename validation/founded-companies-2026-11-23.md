@@ -43,3 +43,20 @@ like real estate. This adds no dates, financial results or market claims.
   supporting copy keeps the factual purpose recorded above.
 - Resume PDF remains byte-for-byte unchanged.
 - Screenshots: /tmp/gabe-work-web-one-description/projects-*.png.
+
+## Kinoko business description follow-up
+
+Replaced the Kinoko implementation details with "a video chat service for older
+adults." This preserves the existing product purpose and audience while removing
+the tech stack at Gabe's request. Web One and the resume are unchanged.
+
+- Projects prose: voice-lint 100/100, no findings; git diff --check passed.
+- site-snap at 1440px and 390px in light and dark: zero errors; the existing
+  mobile Work navigation tap-target warning remains.
+- Reviewed exact Projects screenshots in all four combinations: no clipping,
+  clean wrapping, and existing typography, colors and layout preserved.
+- Rendered desktop and mobile deletion pass: removed WebRTC, Go, TypeScript,
+  Postgres, Raspberry Pi kiosk and peer-to-peer implementation details.
+  Remaining copy identifies founder roles, businesses and their audiences.
+- Resume PDF still matches HEAD byte for byte.
+- Screenshots: /tmp/gabe-work-kinoko-business/projects-*.png.
